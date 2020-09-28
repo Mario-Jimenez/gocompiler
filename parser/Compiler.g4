@@ -15,6 +15,8 @@ LEQ         : '<='; //
 GEQ         : '>='; //
 LSS         : '<'; //
 GTR         : '>'; //
+COMMA       : ','; //
+GUIBAJO     : '_'; //
 
 //OPERADORES
 SUMA        : '+' ; //
