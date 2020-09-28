@@ -17,7 +17,7 @@ GEQ         : '>='; //
 LSS         : '<'; //
 GTR         : '>'; //
 COMMA       : ','; //
-GUIBAJO     : '_'; //
+//GUIBAJO     : '_'; //
 
 //OPERADORES
 SUMA        : '+' ; //
@@ -47,7 +47,7 @@ IDENT   : LETRA (LETRA|DIGITO)* ;
 LITERAL : DIGITO DIGITO* ;
 STRING  : '"' ~ ["\r\n]* '"';
 
-fragment LETRA  : 'a'..'z' | 'A'..'Z' ;
+fragment LETRA  : 'a'..'z' | 'A'..'Z' | '_';
 fragment DIGITO : '0'..'9' ;
 
 // Hidden tokens
