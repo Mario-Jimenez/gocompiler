@@ -16,7 +16,7 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 42, 220,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 42, 221,
 	4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7,
 	4, 8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 4, 13,
 	9, 13, 4, 14, 9, 14, 4, 15, 9, 15, 4, 16, 9, 16, 4, 17, 9, 17, 4, 18, 9,
@@ -35,21 +35,21 @@ var parserATN = []uint16{
 	3, 18, 3, 19, 3, 19, 3, 19, 3, 19, 3, 19, 3, 19, 3, 20, 3, 20, 3, 20, 3,
 	21, 3, 21, 7, 21, 167, 10, 21, 12, 21, 14, 21, 170, 11, 21, 3, 22, 3, 22,
 	3, 22, 3, 22, 3, 22, 3, 23, 3, 23, 3, 23, 3, 23, 3, 24, 3, 24, 7, 24, 183,
-	10, 24, 12, 24, 14, 24, 186, 11, 24, 3, 25, 3, 25, 5, 25, 190, 10, 25,
-	3, 26, 3, 26, 7, 26, 194, 10, 26, 12, 26, 14, 26, 197, 11, 26, 3, 27, 3,
-	27, 3, 27, 3, 27, 3, 27, 3, 28, 3, 28, 3, 28, 3, 28, 3, 28, 5, 28, 209,
-	10, 28, 3, 29, 3, 29, 7, 29, 213, 10, 29, 12, 29, 14, 29, 216, 11, 29,
+	10, 24, 12, 24, 14, 24, 186, 11, 24, 3, 25, 3, 25, 3, 25, 5, 25, 191, 10,
+	25, 3, 26, 3, 26, 7, 26, 195, 10, 26, 12, 26, 14, 26, 198, 11, 26, 3, 27,
+	3, 27, 3, 27, 3, 27, 3, 27, 3, 28, 3, 28, 3, 28, 3, 28, 3, 28, 5, 28, 210,
+	10, 28, 3, 29, 3, 29, 7, 29, 214, 10, 29, 12, 29, 14, 29, 217, 11, 29,
 	3, 29, 3, 29, 3, 29, 2, 2, 30, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22,
 	24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 2,
-	6, 4, 2, 11, 11, 13, 16, 3, 2, 19, 20, 3, 2, 21, 22, 3, 2, 31, 35, 2, 219,
+	6, 4, 2, 11, 11, 13, 16, 3, 2, 19, 20, 3, 2, 21, 22, 3, 2, 31, 35, 2, 220,
 	2, 61, 3, 2, 2, 2, 4, 69, 3, 2, 2, 2, 6, 71, 3, 2, 2, 2, 8, 77, 3, 2, 2,
 	2, 10, 81, 3, 2, 2, 2, 12, 85, 3, 2, 2, 2, 14, 92, 3, 2, 2, 2, 16, 95,
 	3, 2, 2, 2, 18, 102, 3, 2, 2, 2, 20, 105, 3, 2, 2, 2, 22, 112, 3, 2, 2,
 	2, 24, 115, 3, 2, 2, 2, 26, 120, 3, 2, 2, 2, 28, 124, 3, 2, 2, 2, 30, 147,
 	3, 2, 2, 2, 32, 149, 3, 2, 2, 2, 34, 151, 3, 2, 2, 2, 36, 155, 3, 2, 2,
 	2, 38, 161, 3, 2, 2, 2, 40, 168, 3, 2, 2, 2, 42, 171, 3, 2, 2, 2, 44, 176,
-	3, 2, 2, 2, 46, 184, 3, 2, 2, 2, 48, 187, 3, 2, 2, 2, 50, 195, 3, 2, 2,
-	2, 52, 198, 3, 2, 2, 2, 54, 203, 3, 2, 2, 2, 56, 210, 3, 2, 2, 2, 58, 60,
+	3, 2, 2, 2, 46, 184, 3, 2, 2, 2, 48, 190, 3, 2, 2, 2, 50, 196, 3, 2, 2,
+	2, 52, 199, 3, 2, 2, 2, 54, 204, 3, 2, 2, 2, 56, 211, 3, 2, 2, 2, 58, 60,
 	5, 4, 3, 2, 59, 58, 3, 2, 2, 2, 60, 63, 3, 2, 2, 2, 61, 59, 3, 2, 2, 2,
 	61, 62, 3, 2, 2, 2, 62, 3, 3, 2, 2, 2, 63, 61, 3, 2, 2, 2, 64, 65, 7, 25,
 	2, 2, 65, 70, 5, 6, 4, 2, 66, 67, 7, 26, 2, 2, 67, 70, 5, 8, 5, 2, 68,
@@ -95,19 +95,20 @@ var parserATN = []uint16{
 	43, 3, 2, 2, 2, 176, 177, 5, 12, 7, 2, 177, 178, 7, 4, 2, 2, 178, 179,
 	5, 12, 7, 2, 179, 45, 3, 2, 2, 2, 180, 181, 7, 17, 2, 2, 181, 183, 5, 44,
 	23, 2, 182, 180, 3, 2, 2, 2, 183, 186, 3, 2, 2, 2, 184, 182, 3, 2, 2, 2,
-	184, 185, 3, 2, 2, 2, 185, 47, 3, 2, 2, 2, 186, 184, 3, 2, 2, 2, 187, 189,
-	5, 12, 7, 2, 188, 190, 5, 50, 26, 2, 189, 188, 3, 2, 2, 2, 189, 190, 3,
-	2, 2, 2, 190, 49, 3, 2, 2, 2, 191, 192, 7, 17, 2, 2, 192, 194, 5, 12, 7,
-	2, 193, 191, 3, 2, 2, 2, 194, 197, 3, 2, 2, 2, 195, 193, 3, 2, 2, 2, 195,
-	196, 3, 2, 2, 2, 196, 51, 3, 2, 2, 2, 197, 195, 3, 2, 2, 2, 198, 199, 7,
-	29, 2, 2, 199, 200, 7, 5, 2, 2, 200, 201, 5, 12, 7, 2, 201, 202, 7, 6,
-	2, 2, 202, 53, 3, 2, 2, 2, 203, 204, 7, 23, 2, 2, 204, 205, 5, 12, 7, 2,
-	205, 206, 5, 56, 29, 2, 206, 208, 7, 24, 2, 2, 207, 209, 5, 56, 29, 2,
-	208, 207, 3, 2, 2, 2, 208, 209, 3, 2, 2, 2, 209, 55, 3, 2, 2, 2, 210, 214,
-	7, 9, 2, 2, 211, 213, 5, 4, 3, 2, 212, 211, 3, 2, 2, 2, 213, 216, 3, 2,
-	2, 2, 214, 212, 3, 2, 2, 2, 214, 215, 3, 2, 2, 2, 215, 217, 3, 2, 2, 2,
-	216, 214, 3, 2, 2, 2, 217, 218, 7, 10, 2, 2, 218, 57, 3, 2, 2, 2, 18, 61,
-	69, 75, 79, 83, 92, 102, 112, 118, 147, 168, 184, 189, 195, 208, 214,
+	184, 185, 3, 2, 2, 2, 185, 47, 3, 2, 2, 2, 186, 184, 3, 2, 2, 2, 187, 188,
+	5, 12, 7, 2, 188, 189, 5, 50, 26, 2, 189, 191, 3, 2, 2, 2, 190, 187, 3,
+	2, 2, 2, 190, 191, 3, 2, 2, 2, 191, 49, 3, 2, 2, 2, 192, 193, 7, 17, 2,
+	2, 193, 195, 5, 12, 7, 2, 194, 192, 3, 2, 2, 2, 195, 198, 3, 2, 2, 2, 196,
+	194, 3, 2, 2, 2, 196, 197, 3, 2, 2, 2, 197, 51, 3, 2, 2, 2, 198, 196, 3,
+	2, 2, 2, 199, 200, 7, 29, 2, 2, 200, 201, 7, 5, 2, 2, 201, 202, 5, 12,
+	7, 2, 202, 203, 7, 6, 2, 2, 203, 53, 3, 2, 2, 2, 204, 205, 7, 23, 2, 2,
+	205, 206, 5, 12, 7, 2, 206, 209, 5, 56, 29, 2, 207, 208, 7, 24, 2, 2, 208,
+	210, 5, 56, 29, 2, 209, 207, 3, 2, 2, 2, 209, 210, 3, 2, 2, 2, 210, 55,
+	3, 2, 2, 2, 211, 215, 7, 9, 2, 2, 212, 214, 5, 4, 3, 2, 213, 212, 3, 2,
+	2, 2, 214, 217, 3, 2, 2, 2, 215, 213, 3, 2, 2, 2, 215, 216, 3, 2, 2, 2,
+	216, 218, 3, 2, 2, 2, 217, 215, 3, 2, 2, 2, 218, 219, 7, 10, 2, 2, 219,
+	57, 3, 2, 2, 2, 18, 61, 69, 75, 79, 83, 92, 102, 112, 118, 147, 168, 184,
+	190, 196, 209, 215,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
@@ -3095,6 +3096,7 @@ func (s *ExpressionListContext) ToStringTree(ruleNames []string, recog antlr.Rec
 func (p *MonkeyParser) ExpressionList() (localctx IExpressionListContext) {
 	localctx = NewExpressionListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 46, MonkeyParserRULE_expressionList)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -3113,14 +3115,15 @@ func (p *MonkeyParser) ExpressionList() (localctx IExpressionListContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(185)
-		p.Expression()
-	}
-	p.SetState(187)
+	p.SetState(188)
 	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 12, p.GetParserRuleContext()) == 1 {
+	if (((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<MonkeyParserPIZQ)|(1<<MonkeyParserLBRACK)|(1<<MonkeyParserLBRACE)|(1<<MonkeyParserIF)|(1<<MonkeyParserTRUE)|(1<<MonkeyParserFALSE)|(1<<MonkeyParserPUTS)|(1<<MonkeyParserFN)|(1<<MonkeyParserLEN)|(1<<MonkeyParserFIRST)|(1<<MonkeyParserLAST))) != 0) || (((_la-32)&-(0x1f+1)) == 0 && ((1<<uint((_la-32)))&((1<<(MonkeyParserREST-32))|(1<<(MonkeyParserPUSH-32))|(1<<(MonkeyParserIDENT-32))|(1<<(MonkeyParserLITERAL-32))|(1<<(MonkeyParserSTRING-32)))) != 0) {
+		{
+			p.SetState(185)
+			p.Expression()
+		}
 		{
 			p.SetState(186)
 			p.MoreExpressions()
@@ -3230,21 +3233,21 @@ func (p *MonkeyParser) MoreExpressions() (localctx IMoreExpressionsContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(193)
+	p.SetState(194)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == MonkeyParserCOMMA {
 		{
-			p.SetState(189)
+			p.SetState(190)
 			p.Match(MonkeyParserCOMMA)
 		}
 		{
-			p.SetState(190)
+			p.SetState(191)
 			p.Expression()
 		}
 
-		p.SetState(195)
+		p.SetState(196)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -3342,19 +3345,19 @@ func (p *MonkeyParser) PrintExpression() (localctx IPrintExpressionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(196)
+		p.SetState(197)
 		p.Match(MonkeyParserPUTS)
 	}
 	{
-		p.SetState(197)
+		p.SetState(198)
 		p.Match(MonkeyParserPIZQ)
 	}
 	{
-		p.SetState(198)
+		p.SetState(199)
 		p.Expression()
 	}
 	{
-		p.SetState(199)
+		p.SetState(200)
 		p.Match(MonkeyParserPDER)
 	}
 
@@ -3451,6 +3454,7 @@ func (s *IfExpressionContext) ToStringTree(ruleNames []string, recog antlr.Recog
 func (p *MonkeyParser) IfExpression() (localctx IIfExpressionContext) {
 	localctx = NewIfExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 52, MonkeyParserRULE_ifExpression)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -3470,28 +3474,28 @@ func (p *MonkeyParser) IfExpression() (localctx IIfExpressionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(201)
+		p.SetState(202)
 		p.Match(MonkeyParserIF)
 	}
 	{
-		p.SetState(202)
+		p.SetState(203)
 		p.Expression()
 	}
 	{
-		p.SetState(203)
+		p.SetState(204)
 		p.BlockStatement()
 	}
-
-	{
-		p.SetState(204)
-		p.Match(MonkeyParserELSE)
-	}
-	p.SetState(206)
+	p.SetState(207)
 	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 14, p.GetParserRuleContext()) == 1 {
+	if _la == MonkeyParserELSE {
 		{
 			p.SetState(205)
+			p.Match(MonkeyParserELSE)
+		}
+		{
+			p.SetState(206)
 			p.BlockStatement()
 		}
 
@@ -3600,25 +3604,25 @@ func (p *MonkeyParser) BlockStatement() (localctx IBlockStatementContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(208)
+		p.SetState(209)
 		p.Match(MonkeyParserLBRACE)
 	}
-	p.SetState(212)
+	p.SetState(213)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for (((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<MonkeyParserPIZQ)|(1<<MonkeyParserLBRACK)|(1<<MonkeyParserLBRACE)|(1<<MonkeyParserIF)|(1<<MonkeyParserLET)|(1<<MonkeyParserRETURN)|(1<<MonkeyParserTRUE)|(1<<MonkeyParserFALSE)|(1<<MonkeyParserPUTS)|(1<<MonkeyParserFN)|(1<<MonkeyParserLEN)|(1<<MonkeyParserFIRST)|(1<<MonkeyParserLAST))) != 0) || (((_la-32)&-(0x1f+1)) == 0 && ((1<<uint((_la-32)))&((1<<(MonkeyParserREST-32))|(1<<(MonkeyParserPUSH-32))|(1<<(MonkeyParserIDENT-32))|(1<<(MonkeyParserLITERAL-32))|(1<<(MonkeyParserSTRING-32)))) != 0) {
 		{
-			p.SetState(209)
+			p.SetState(210)
 			p.Statement()
 		}
 
-		p.SetState(214)
+		p.SetState(215)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(215)
+		p.SetState(216)
 		p.Match(MonkeyParserRBRACE)
 	}
 
