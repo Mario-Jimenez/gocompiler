@@ -1,4 +1,4 @@
-lexer grammar Compiler;
+lexer grammar MonkeyLexer;
 
 //SIMBOLOS
 PyCOMA      : ';' ; //
@@ -9,6 +9,7 @@ LBRACK      : '[' ; //
 RBRACK      : ']' ; //
 LBRACE      : '{' ; //
 RBRACE      : '}' ; //
+
 EQL         : '=='; //
 ASSIGN      : '=';  //
 LEQ         : '<='; //

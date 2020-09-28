@@ -1,4 +1,4 @@
-// Code generated from c:\Users\Emmanuel\source\CompiPR1\monkeycompiler\parser\Compiler.g4 by ANTLR 4.8. DO NOT EDIT.
+// Code generated from c:\Users\Emmanuel\source\CompiPR1\monkeycompiler\parser\MonkeyLexer.g4 by ANTLR 4.8. DO NOT EDIT.
 
 package parser
 
@@ -163,7 +163,7 @@ var lexerRuleNames = []string{
 	"STRING", "LETRA", "DIGITO", "WS", "COMMENT", "TERMINATOR", "LINE_COMMENT",
 }
 
-type Compiler struct {
+type MonkeyLexer struct {
 	*antlr.BaseLexer
 	channelNames []string
 	modeNames    []string
@@ -178,9 +178,9 @@ func init() {
 	}
 }
 
-func NewCompiler(input antlr.CharStream) *Compiler {
+func NewMonkeyLexer(input antlr.CharStream) *MonkeyLexer {
 
-	l := new(Compiler)
+	l := new(MonkeyLexer)
 
 	l.BaseLexer = antlr.NewBaseLexer(input)
 	l.Interpreter = antlr.NewLexerATNSimulator(l, lexerAtn, lexerDecisionToDFA, antlr.NewPredictionContextCache())
@@ -190,52 +190,52 @@ func NewCompiler(input antlr.CharStream) *Compiler {
 	l.RuleNames = lexerRuleNames
 	l.LiteralNames = lexerLiteralNames
 	l.SymbolicNames = lexerSymbolicNames
-	l.GrammarFileName = "Compiler.g4"
+	l.GrammarFileName = "MonkeyLexer.g4"
 	// TODO: l.EOF = antlr.TokenEOF
 
 	return l
 }
 
-// Compiler tokens.
+// MonkeyLexer tokens.
 const (
-	CompilerPyCOMA       = 1
-	CompilerDOSPUNTOS    = 2
-	CompilerPIZQ         = 3
-	CompilerPDER         = 4
-	CompilerLBRACK       = 5
-	CompilerRBRACK       = 6
-	CompilerLBRACE       = 7
-	CompilerRBRACE       = 8
-	CompilerEQL          = 9
-	CompilerASSIGN       = 10
-	CompilerLEQ          = 11
-	CompilerGEQ          = 12
-	CompilerLSS          = 13
-	CompilerGTR          = 14
-	CompilerCOMMA        = 15
-	CompilerGUIBAJO      = 16
-	CompilerSUMA         = 17
-	CompilerRESTA        = 18
-	CompilerMULT         = 19
-	CompilerDIV          = 20
-	CompilerIF           = 21
-	CompilerELSE         = 22
-	CompilerLET          = 23
-	CompilerRETURN       = 24
-	CompilerTRUE         = 25
-	CompilerFALSE        = 26
-	CompilerPUTS         = 27
-	CompilerFN           = 28
-	CompilerLEN          = 29
-	CompilerFIRST        = 30
-	CompilerLAST         = 31
-	CompilerREST         = 32
-	CompilerPUSH         = 33
-	CompilerIDENT        = 34
-	CompilerLITERAL      = 35
-	CompilerSTRING       = 36
-	CompilerWS           = 37
-	CompilerCOMMENT      = 38
-	CompilerTERMINATOR   = 39
-	CompilerLINE_COMMENT = 40
+	MonkeyLexerPyCOMA       = 1
+	MonkeyLexerDOSPUNTOS    = 2
+	MonkeyLexerPIZQ         = 3
+	MonkeyLexerPDER         = 4
+	MonkeyLexerLBRACK       = 5
+	MonkeyLexerRBRACK       = 6
+	MonkeyLexerLBRACE       = 7
+	MonkeyLexerRBRACE       = 8
+	MonkeyLexerEQL          = 9
+	MonkeyLexerASSIGN       = 10
+	MonkeyLexerLEQ          = 11
+	MonkeyLexerGEQ          = 12
+	MonkeyLexerLSS          = 13
+	MonkeyLexerGTR          = 14
+	MonkeyLexerCOMMA        = 15
+	MonkeyLexerGUIBAJO      = 16
+	MonkeyLexerSUMA         = 17
+	MonkeyLexerRESTA        = 18
+	MonkeyLexerMULT         = 19
+	MonkeyLexerDIV          = 20
+	MonkeyLexerIF           = 21
+	MonkeyLexerELSE         = 22
+	MonkeyLexerLET          = 23
+	MonkeyLexerRETURN       = 24
+	MonkeyLexerTRUE         = 25
+	MonkeyLexerFALSE        = 26
+	MonkeyLexerPUTS         = 27
+	MonkeyLexerFN           = 28
+	MonkeyLexerLEN          = 29
+	MonkeyLexerFIRST        = 30
+	MonkeyLexerLAST         = 31
+	MonkeyLexerREST         = 32
+	MonkeyLexerPUSH         = 33
+	MonkeyLexerIDENT        = 34
+	MonkeyLexerLITERAL      = 35
+	MonkeyLexerSTRING       = 36
+	MonkeyLexerWS           = 37
+	MonkeyLexerCOMMENT      = 38
+	MonkeyLexerTERMINATOR   = 39
+	MonkeyLexerLINE_COMMENT = 40
 )
