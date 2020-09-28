@@ -1,10 +1,14 @@
-# gocompiler
+# monkeycompiler
 
-A simple compiler written in Go.
+Compiler for the Monkey programming language written in Go.
 
 ## Usage
 
 A Makefile is included for convenience.
+
+#### Download dependencies
+
+Get dependencies with `$ go get ./...`.
 
 #### Generate ANTLR files for Go
 
@@ -18,3 +22,22 @@ Build project with `$ make build`.
 
 Run project with `$ make run` or with binary file `$ ./compiler`.
 
+## Web service
+
+#### Configuration
+
+Base URL: http://locahost:4440/monkeycompiler
+
+#### Endpoints
+
+###### /compile
+
+**Request:**
+
+```
+{"program": "program text here"}
+```
+
+**Response:**
+
+Not yet implemented.
