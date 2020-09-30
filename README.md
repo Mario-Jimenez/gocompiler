@@ -35,9 +35,15 @@ Base URL: http://locahost:4440/monkeycompiler
 **Request:**
 
 ```
-{"program": "program text here"}
+{"program": string}
 ```
 
 **Response:**
 
-Not yet implemented.
+```
+{
+    "errors": []string,
+    "lines": []int,
+}
+```
+

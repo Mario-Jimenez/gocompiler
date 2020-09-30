@@ -10,9 +10,11 @@ import (
 	"time"
 )
 
+// Run web service
 func Run() {
 	router := newRouter()
 
+	// server setup
 	srv := &http.Server{
 		Addr:         ":4440",
 		Handler:      router,
