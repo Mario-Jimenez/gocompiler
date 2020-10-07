@@ -16,3 +16,6 @@
 
 # ignore binary
 compiler
+
+# ignore vscode config
+.vscode
