@@ -5,6 +5,7 @@ import (
 
 	"github.com/Mario-Jimenez/gocompiler/errors"
 	"github.com/Mario-Jimenez/gocompiler/parser"
+	"github.com/Mario-Jimenez/gocompiler/visitor"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"github.com/gin-gonic/gin"
 )
@@ -27,17 +28,18 @@ func (*Monkey) Compile(c *gin.Context) {
 		return
 	}
 
-	parseErrors, parseLines := parsing(req.Program)
+	parseErrors, parseLines, parseTree := parsing(req.Program)
 
 	// response
 	c.JSON(200, gin.H{
 		"errors": parseErrors,
 		"lines":  parseLines,
+		"tree":   parseTree,
 	})
 }
 
 // parsing program
-func parsing(program string) ([]string, []int) {
+func parsing(program string) ([]string, []int, interface{}) {
 	// compiler input
 	input := antlr.NewInputStream(program)
 
@@ -56,11 +58,14 @@ func parsing(program string) ([]string, []int) {
 	parser.AddErrorListener(parserErrors)
 
 	// initial rule to start parsing process
-	parser.Program()
+	tree := parser.Program()
+
+	visitor := visitor.NewMonkeyVisitor()
+	parseTree := visitor.Visit(tree)
 
 	if parserErrors.Errors() == nil {
-		return []string{}, []int{}
+		return []string{}, []int{}, parseTree
 	}
 
-	return parserErrors.Errors(), parserErrors.Lines()
+	return parserErrors.Errors(), parserErrors.Lines(), parseTree
 }
