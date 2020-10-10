@@ -54,7 +54,7 @@ primitiveExpression:
 	| FUNC L_PAREN functionParameters R_PAREN blockStatement	# functionTree
 	| L_CURLY hashContent (COMMA hashContent)* R_CURLY			# hashObjectTree
 	| PUTS L_PAREN expression R_PAREN							# printTree
-	| IF expression blockStatement (ELSE blockStatement)?		# ifTree
+	| IF expression blockStatement (ELSE blockStatement)?		# ConditionalTree
 	;
 arrayFunctions:
 	LEN		# arrayLen

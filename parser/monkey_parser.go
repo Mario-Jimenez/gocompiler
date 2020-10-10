@@ -318,6 +318,16 @@ func (s *ProgramTreeContext) Statement(i int) IStatementContext {
 	return t.(IStatementContext)
 }
 
+func (s *ProgramTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitProgramTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *MonkeyParser) Program() (localctx IProgramContext) {
 	localctx = NewProgramContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 0, MonkeyParserRULE_program)
@@ -457,6 +467,16 @@ func (s *LetStatementTreeContext) SEMI() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserSEMI, 0)
 }
 
+func (s *LetStatementTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitLetStatementTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type ExpressionStatementTreeContext struct {
 	*StatementContext
 }
@@ -487,6 +507,16 @@ func (s *ExpressionStatementTreeContext) Expression() IExpressionContext {
 
 func (s *ExpressionStatementTreeContext) SEMI() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserSEMI, 0)
+}
+
+func (s *ExpressionStatementTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitExpressionStatementTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 type ReturnStatementTreeContext struct {
@@ -523,6 +553,16 @@ func (s *ReturnStatementTreeContext) Expression() IExpressionContext {
 
 func (s *ReturnStatementTreeContext) SEMI() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserSEMI, 0)
+}
+
+func (s *ReturnStatementTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitReturnStatementTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 func (p *MonkeyParser) Statement() (localctx IStatementContext) {
@@ -744,6 +784,16 @@ func (s *ExpressionTreeContext) Comparison(i int) IComparisonContext {
 	return t.(IComparisonContext)
 }
 
+func (s *ExpressionTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitExpressionTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *MonkeyParser) Expression() (localctx IExpressionContext) {
 	localctx = NewExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 4, MonkeyParserRULE_expression)
@@ -865,6 +915,16 @@ func (s *GreaterComparisonContext) GREATER() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserGREATER, 0)
 }
 
+func (s *GreaterComparisonContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitGreaterComparison(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type GreaterOrEqualsComparisonContext struct {
 	*ComparisonContext
 }
@@ -885,6 +945,16 @@ func (s *GreaterOrEqualsComparisonContext) GetRuleContext() antlr.RuleContext {
 
 func (s *GreaterOrEqualsComparisonContext) GREATER_OR_EQUALS() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserGREATER_OR_EQUALS, 0)
+}
+
+func (s *GreaterOrEqualsComparisonContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitGreaterOrEqualsComparison(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 type LessOrEqualsComparisonContext struct {
@@ -909,6 +979,16 @@ func (s *LessOrEqualsComparisonContext) LESS_OR_EQUALS() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserLESS_OR_EQUALS, 0)
 }
 
+func (s *LessOrEqualsComparisonContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitLessOrEqualsComparison(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type LessComparisonContext struct {
 	*ComparisonContext
 }
@@ -931,6 +1011,16 @@ func (s *LessComparisonContext) LESS() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserLESS, 0)
 }
 
+func (s *LessComparisonContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitLessComparison(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type EqualsComparisonContext struct {
 	*ComparisonContext
 }
@@ -951,6 +1041,16 @@ func (s *EqualsComparisonContext) GetRuleContext() antlr.RuleContext {
 
 func (s *EqualsComparisonContext) EQUALS() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserEQUALS, 0)
+}
+
+func (s *EqualsComparisonContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitEqualsComparison(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 func (p *MonkeyParser) Comparison() (localctx IComparisonContext) {
@@ -1138,6 +1238,16 @@ func (s *AdditionTreeContext) AdditionFactor(i int) IAdditionFactorContext {
 	return t.(IAdditionFactorContext)
 }
 
+func (s *AdditionTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitAdditionTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *MonkeyParser) AdditionExpression() (localctx IAdditionExpressionContext) {
 	localctx = NewAdditionExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 8, MonkeyParserRULE_additionExpression)
@@ -1259,6 +1369,16 @@ func (s *PlusOperatorContext) PLUS() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserPLUS, 0)
 }
 
+func (s *PlusOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitPlusOperator(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type MinusOperatorContext struct {
 	*AdditionFactorContext
 }
@@ -1279,6 +1399,16 @@ func (s *MinusOperatorContext) GetRuleContext() antlr.RuleContext {
 
 func (s *MinusOperatorContext) MINUS() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserMINUS, 0)
+}
+
+func (s *MinusOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitMinusOperator(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 func (p *MonkeyParser) AdditionFactor() (localctx IAdditionFactorContext) {
@@ -1442,6 +1572,16 @@ func (s *MultiplicationTreeContext) MultiplicationFactor(i int) IMultiplicationF
 	return t.(IMultiplicationFactorContext)
 }
 
+func (s *MultiplicationTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitMultiplicationTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *MonkeyParser) MultiplicationExpression() (localctx IMultiplicationExpressionContext) {
 	localctx = NewMultiplicationExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 12, MonkeyParserRULE_multiplicationExpression)
@@ -1563,6 +1703,16 @@ func (s *DivisionOperatorContext) DIV() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserDIV, 0)
 }
 
+func (s *DivisionOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitDivisionOperator(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type MultiplicationOperatorContext struct {
 	*MultiplicationFactorContext
 }
@@ -1583,6 +1733,16 @@ func (s *MultiplicationOperatorContext) GetRuleContext() antlr.RuleContext {
 
 func (s *MultiplicationOperatorContext) MULT() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserMULT, 0)
+}
+
+func (s *MultiplicationOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitMultiplicationOperator(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 func (p *MonkeyParser) MultiplicationFactor() (localctx IMultiplicationFactorContext) {
@@ -1730,6 +1890,16 @@ func (s *ElementTreeContext) CallExpression() ICallExpressionContext {
 	return t.(ICallExpressionContext)
 }
 
+func (s *ElementTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitElementTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *MonkeyParser) ElementExpression() (localctx IElementExpressionContext) {
 	localctx = NewElementExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 16, MonkeyParserRULE_elementExpression)
@@ -1862,6 +2032,16 @@ func (s *ElementAccessTreeContext) R_BRACKET() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserR_BRACKET, 0)
 }
 
+func (s *ElementAccessTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitElementAccessTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *MonkeyParser) ElementAccess() (localctx IElementAccessContext) {
 	localctx = NewElementAccessContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 18, MonkeyParserRULE_elementAccess)
@@ -1986,6 +2166,16 @@ func (s *FunctionCallTreeContext) R_PAREN() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserR_PAREN, 0)
 }
 
+func (s *FunctionCallTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitFunctionCallTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *MonkeyParser) CallExpression() (localctx ICallExpressionContext) {
 	localctx = NewCallExpressionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 20, MonkeyParserRULE_callExpression)
@@ -2096,6 +2286,16 @@ func (s *IdentifierContext) IDENTIFIER() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserIDENTIFIER, 0)
 }
 
+func (s *IdentifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitIdentifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type StringContext struct {
 	*PrimitiveExpressionContext
 }
@@ -2116,6 +2316,16 @@ func (s *StringContext) GetRuleContext() antlr.RuleContext {
 
 func (s *StringContext) STRING() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserSTRING, 0)
+}
+
+func (s *StringContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitString(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 type ArrayTreeContext struct {
@@ -2152,6 +2362,16 @@ func (s *ArrayTreeContext) ExpressionList() IExpressionListContext {
 
 func (s *ArrayTreeContext) R_BRACKET() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserR_BRACKET, 0)
+}
+
+func (s *ArrayTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitArrayTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 type HashObjectTreeContext struct {
@@ -2211,6 +2431,16 @@ func (s *HashObjectTreeContext) COMMA(i int) antlr.TerminalNode {
 	return s.GetToken(MonkeyParserCOMMA, i)
 }
 
+func (s *HashObjectTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitHashObjectTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type TrueContext struct {
 	*PrimitiveExpressionContext
 }
@@ -2231,6 +2461,16 @@ func (s *TrueContext) GetRuleContext() antlr.RuleContext {
 
 func (s *TrueContext) TRUE() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserTRUE, 0)
+}
+
+func (s *TrueContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitTrue(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 type FalseContext struct {
@@ -2255,12 +2495,22 @@ func (s *FalseContext) FALSE() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserFALSE, 0)
 }
 
-type IfTreeContext struct {
+func (s *FalseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitFalse(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type ConditionalTreeContext struct {
 	*PrimitiveExpressionContext
 }
 
-func NewIfTreeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *IfTreeContext {
-	var p = new(IfTreeContext)
+func NewConditionalTreeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ConditionalTreeContext {
+	var p = new(ConditionalTreeContext)
 
 	p.PrimitiveExpressionContext = NewEmptyPrimitiveExpressionContext()
 	p.parser = parser
@@ -2269,15 +2519,15 @@ func NewIfTreeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *IfTreeC
 	return p
 }
 
-func (s *IfTreeContext) GetRuleContext() antlr.RuleContext {
+func (s *ConditionalTreeContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *IfTreeContext) IF() antlr.TerminalNode {
+func (s *ConditionalTreeContext) IF() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserIF, 0)
 }
 
-func (s *IfTreeContext) Expression() IExpressionContext {
+func (s *ConditionalTreeContext) Expression() IExpressionContext {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpressionContext)(nil)).Elem(), 0)
 
 	if t == nil {
@@ -2287,7 +2537,7 @@ func (s *IfTreeContext) Expression() IExpressionContext {
 	return t.(IExpressionContext)
 }
 
-func (s *IfTreeContext) AllBlockStatement() []IBlockStatementContext {
+func (s *ConditionalTreeContext) AllBlockStatement() []IBlockStatementContext {
 	var ts = s.GetTypedRuleContexts(reflect.TypeOf((*IBlockStatementContext)(nil)).Elem())
 	var tst = make([]IBlockStatementContext, len(ts))
 
@@ -2300,7 +2550,7 @@ func (s *IfTreeContext) AllBlockStatement() []IBlockStatementContext {
 	return tst
 }
 
-func (s *IfTreeContext) BlockStatement(i int) IBlockStatementContext {
+func (s *ConditionalTreeContext) BlockStatement(i int) IBlockStatementContext {
 	var t = s.GetTypedRuleContext(reflect.TypeOf((*IBlockStatementContext)(nil)).Elem(), i)
 
 	if t == nil {
@@ -2310,8 +2560,18 @@ func (s *IfTreeContext) BlockStatement(i int) IBlockStatementContext {
 	return t.(IBlockStatementContext)
 }
 
-func (s *IfTreeContext) ELSE() antlr.TerminalNode {
+func (s *ConditionalTreeContext) ELSE() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserELSE, 0)
+}
+
+func (s *ConditionalTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitConditionalTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 type IntegerContext struct {
@@ -2334,6 +2594,16 @@ func (s *IntegerContext) GetRuleContext() antlr.RuleContext {
 
 func (s *IntegerContext) INTEGER() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserINTEGER, 0)
+}
+
+func (s *IntegerContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitInteger(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 type ArrayFunctionTreeContext struct {
@@ -2382,6 +2652,16 @@ func (s *ArrayFunctionTreeContext) R_PAREN() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserR_PAREN, 0)
 }
 
+func (s *ArrayFunctionTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitArrayFunctionTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type GroupedExpressionTreeContext struct {
 	*PrimitiveExpressionContext
 }
@@ -2416,6 +2696,16 @@ func (s *GroupedExpressionTreeContext) Expression() IExpressionContext {
 
 func (s *GroupedExpressionTreeContext) R_PAREN() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserR_PAREN, 0)
+}
+
+func (s *GroupedExpressionTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitGroupedExpressionTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 type FunctionTreeContext struct {
@@ -2468,6 +2758,16 @@ func (s *FunctionTreeContext) BlockStatement() IBlockStatementContext {
 	return t.(IBlockStatementContext)
 }
 
+func (s *FunctionTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitFunctionTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type PrintTreeContext struct {
 	*PrimitiveExpressionContext
 }
@@ -2506,6 +2806,16 @@ func (s *PrintTreeContext) Expression() IExpressionContext {
 
 func (s *PrintTreeContext) R_PAREN() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserR_PAREN, 0)
+}
+
+func (s *PrintTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitPrintTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionContext) {
@@ -2704,7 +3014,7 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		}
 
 	case MonkeyParserIF:
-		localctx = NewIfTreeContext(p, localctx)
+		localctx = NewConditionalTreeContext(p, localctx)
 		p.EnterOuterAlt(localctx, 12)
 		{
 			p.SetState(155)
@@ -2813,6 +3123,16 @@ func (s *ArrayFirstContext) FIRST() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserFIRST, 0)
 }
 
+func (s *ArrayFirstContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitArrayFirst(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type ArrayLastContext struct {
 	*ArrayFunctionsContext
 }
@@ -2833,6 +3153,16 @@ func (s *ArrayLastContext) GetRuleContext() antlr.RuleContext {
 
 func (s *ArrayLastContext) LAST() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserLAST, 0)
+}
+
+func (s *ArrayLastContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitArrayLast(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 type ArrayLenContext struct {
@@ -2857,6 +3187,16 @@ func (s *ArrayLenContext) LEN() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserLEN, 0)
 }
 
+func (s *ArrayLenContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitArrayLen(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type ArrayPushContext struct {
 	*ArrayFunctionsContext
 }
@@ -2879,6 +3219,16 @@ func (s *ArrayPushContext) PUSH() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserPUSH, 0)
 }
 
+func (s *ArrayPushContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitArrayPush(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type ArrayRestContext struct {
 	*ArrayFunctionsContext
 }
@@ -2899,6 +3249,16 @@ func (s *ArrayRestContext) GetRuleContext() antlr.RuleContext {
 
 func (s *ArrayRestContext) REST() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserREST, 0)
+}
+
+func (s *ArrayRestContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitArrayRest(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 func (p *MonkeyParser) ArrayFunctions() (localctx IArrayFunctionsContext) {
@@ -3056,6 +3416,16 @@ func (s *FunctionParametersTreeContext) COMMA(i int) antlr.TerminalNode {
 	return s.GetToken(MonkeyParserCOMMA, i)
 }
 
+func (s *FunctionParametersTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitFunctionParametersTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *MonkeyParser) FunctionParameters() (localctx IFunctionParametersContext) {
 	localctx = NewFunctionParametersContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 26, MonkeyParserRULE_functionParameters)
@@ -3200,6 +3570,16 @@ func (s *HashPairTreeContext) COLON() antlr.TerminalNode {
 	return s.GetToken(MonkeyParserCOLON, 0)
 }
 
+func (s *HashPairTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitHashPairTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 func (p *MonkeyParser) HashContent() (localctx IHashContentContext) {
 	localctx = NewHashContentContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 28, MonkeyParserRULE_hashContent)
@@ -3335,6 +3715,16 @@ func (s *ExpressionListTreeContext) AllCOMMA() []antlr.TerminalNode {
 
 func (s *ExpressionListTreeContext) COMMA(i int) antlr.TerminalNode {
 	return s.GetToken(MonkeyParserCOMMA, i)
+}
+
+func (s *ExpressionListTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitExpressionListTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 func (p *MonkeyParser) ExpressionList() (localctx IExpressionListContext) {
@@ -3490,6 +3880,16 @@ func (s *BlockTreeContext) Statement(i int) IStatementContext {
 	}
 
 	return t.(IStatementContext)
+}
+
+func (s *BlockTreeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case MonkeyParserVisitor:
+		return t.VisitBlockTree(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
 }
 
 func (p *MonkeyParser) BlockStatement() (localctx IBlockStatementContext) {
