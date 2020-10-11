@@ -1,0 +1,72 @@
+let fill = fn(x, i) {
+  let xs = [];
+  while (i > 0) {
+    xs: push(xs, x),
+    i: i - 1
+  }
+  return xs
+};
+
+let ip = 0;
+let dp = 0;
+let memory = fill(0, 32);
+
+while (ip < len(program)) {
+	op : program[ip],
+
+	if (op == ">") {
+	  dp + 1
+	}    
+	else{
+		if (op == "<") {
+			dp - 1
+		}
+		else{
+			if (op == "+") {
+				if (memory[dp] < 255) {
+					memory[dp] + 1
+				}
+				else{
+					memory[dp] push(0)
+				}
+			}
+			else{
+				if (op == "-") {
+					if (memory[dp] > 0) {
+						memory[dp] push(memory[dp] - 1)
+					}
+					else{
+						memory[dp] push(255)
+					}
+				}
+				else{
+					if (op == ".") {
+						write(memory[dp])
+					}
+					else{
+						if (op == ",") {
+							memory[dp] push(read())
+						}
+						else{
+							if (op == "[") {
+								if (memory[dp] == 0) {
+									ip push(jumps[ip])
+								}
+							}else{
+								if (op == "]") {
+									if (memory[dp] == 0) {
+										ip push(jumps[ip])
+									}
+								}
+								else{
+									ip push(ip +1)
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+: print("memory: " + memory + "ip: " + ip + "dp: " + dp)
+}
