@@ -4,58 +4,69 @@ options {
 	tokenVocab = MonkeyLexer;
 }
 
-program: statement* EOF;
+program : statement* EOF # programTree;
 statement:
-	LET letStatement
-	| RETURN returnStatement
-	| expressionStatement;
-letStatement: IDENTIFIER ASSIGN expression SEMI?;
-returnStatement: expression SEMI?;
-expressionStatement: expression SEMI?;
-expression: additionExpression comparison;
-comparison: (
-		(
-			LESS
-			| GREATER
-			| LESS_OR_EQUALS
-			| GREATER_OR_EQUALS
-			| EQUALS
-		) additionExpression
-	)*;
-additionExpression: multiplicationExpression additionFactor;
-additionFactor: ((PLUS | MINUS) multiplicationExpression)*;
+	LET IDENTIFIER ASSIGN expression SEMI?	# letStatementTree
+	| RETURN expression SEMI?				# returnStatementTree
+	| expression SEMI?						# expressionStatementTree
+	;
+expression:
+	additionExpression (comparison additionExpression)* # expressionTree
+	;
+comparison:
+	LESS				# lessComparison
+	| GREATER			# greaterComparison
+	| LESS_OR_EQUALS	# lessOrEqualsComparison
+	| GREATER_OR_EQUALS	# greaterOrEqualsComparison
+	| EQUALS			# equalsComparison
+	;
+additionExpression:
+	multiplicationExpression (
+		additionFactor multiplicationExpression
+	)* # additionTree
+	;
+additionFactor : PLUS # plusOperator | MINUS # minusOperator;
 multiplicationExpression:
-	elementExpression multiplicationFactor;
-multiplicationFactor: ((MULT | DIV) elementExpression)*;
+	elementExpression (multiplicationFactor elementExpression)* # multiplicationTree
+	;
+multiplicationFactor:
+	MULT	# multiplicationOperator
+	| DIV	# divisionOperator
+	;
 elementExpression:
-	primitiveExpression (elementAccess | callExpression)?;
-elementAccess: L_BRACKET expression R_BRACKET;
-callExpression: L_PAREN expressionList R_PAREN;
+	primitiveExpression (elementAccess | callExpression)? # elementTree
+	;
+elementAccess:
+	L_BRACKET expression R_BRACKET # elementAccessTree
+	;
+callExpression:
+	L_PAREN expressionList R_PAREN # functionCallTree
+	;
 primitiveExpression:
-	INTEGER
-	| STRING
-	| IDENTIFIER
-	| TRUE
-	| FALSE
-	| L_PAREN expression R_PAREN
-	| arrayLiteral
-	| arrayFunctions L_PAREN expressionList R_PAREN
-	| functionLiteral
-	| hashLiteral
-	| printExpression
-	| ifExpression;
-arrayFunctions: LEN | FIRST | LAST | REST | PUSH;
-arrayLiteral: L_BRACKET expressionList R_BRACKET;
-functionLiteral:
-	FUNC L_PAREN functionParameters R_PAREN blockStatement;
-functionParameters: IDENTIFIER moreIdentifiers;
-moreIdentifiers: (COMMA IDENTIFIER)*;
-hashLiteral: L_CURLY hashContent moreHashContent R_CURLY;
-hashContent: expression COLON expression;
-moreHashContent: (COMMA hashContent)*;
-expressionList: (expression moreExpressions)?;
-moreExpressions: (COMMA expression)*;
-printExpression: PUTS L_PAREN expression R_PAREN;
-ifExpression:
-	IF expression blockStatement (ELSE blockStatement)?;
-blockStatement: L_CURLY statement* R_CURLY;
+	INTEGER														# integer
+	| STRING													# string
+	| IDENTIFIER												# identifier
+	| TRUE														# true
+	| FALSE														# false
+	| L_PAREN expression R_PAREN								# groupedExpressionTree
+	| L_BRACKET expressionList R_BRACKET						# arrayTree
+	| arrayFunctions L_PAREN expressionList R_PAREN				# arrayFunctionTree
+	| FUNC L_PAREN functionParameters R_PAREN blockStatement	# functionTree
+	| L_CURLY hashContent (COMMA hashContent)* R_CURLY			# hashObjectTree
+	| PUTS L_PAREN expression R_PAREN							# printTree
+	| IF expression blockStatement (ELSE blockStatement)?		# ConditionalTree
+	;
+arrayFunctions:
+	LEN		# arrayLen
+	| FIRST	# arrayFirst
+	| LAST	# arrayLast
+	| REST	# arrayRest
+	| PUSH	# arrayPush
+	;
+functionParameters:
+	IDENTIFIER (COMMA IDENTIFIER)* # functionParametersTree
+	;
+hashContent : expression COLON expression # hashPairTree;
+expressionList: (expression (COMMA expression)*)? # expressionListTree
+	;
+blockStatement : L_CURLY statement* R_CURLY # blockTree;
