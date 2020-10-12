@@ -1,0 +1,24 @@
+/*//Comentario 1*/
+let s = "world";
+if (s == "") { 
+  let t = "The end";
+  fn(s, t){
+    "Aqui se imprime The end world"
+  }
+}
+
+//Comentario 2 /*Aquí existe un comentario*/
+let i = 3;
+while (i > 0) {
+  i: i - 1
+}
+
+//Aqui existe una lista
+let lst = [0, 1, 2];
+lst[1] push ("one");
+fn(lst){return null};
+
+/*Un comentario antes del comentario*/ //Comentario 3 //Map es lo maximo :v/
+let map = {"a": 1, "b": 2};
+map["a"] push (3);
+fn(map){return 0}
