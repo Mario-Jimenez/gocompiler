@@ -7,7 +7,7 @@ import (
 )
 
 // ParserErrorListener handles error detection,
-// store error message and row number where error occured
+// stores error message and row number where error occured
 type ParserErrorListener struct {
 	*antlr.DefaultErrorListener
 	errorList  []string

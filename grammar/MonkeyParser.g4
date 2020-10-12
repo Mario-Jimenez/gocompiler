@@ -40,7 +40,7 @@ elementAccess:
 	L_BRACKET expression R_BRACKET # elementAccessTree
 	;
 callExpression:
-	L_PAREN expressionList R_PAREN # functionCallTree
+	L_PAREN expressionList? R_PAREN # functionCallTree
 	;
 primitiveExpression:
 	INTEGER														# integer
@@ -49,12 +49,12 @@ primitiveExpression:
 	| TRUE														# true
 	| FALSE														# false
 	| L_PAREN expression R_PAREN								# groupedExpressionTree
-	| L_BRACKET expressionList R_BRACKET						# arrayTree
-	| arrayFunctions L_PAREN expressionList R_PAREN				# arrayFunctionTree
+	| L_BRACKET expressionList? R_BRACKET						# arrayTree
+	| arrayFunctions L_PAREN expressionList? R_PAREN			# arrayFunctionTree
 	| FUNC L_PAREN functionParameters R_PAREN blockStatement	# functionTree
 	| L_CURLY hashContent (COMMA hashContent)* R_CURLY			# hashObjectTree
 	| PUTS L_PAREN expression R_PAREN							# printTree
-	| IF expression blockStatement (ELSE blockStatement)?		# ConditionalTree
+	| IF expression blockStatement (ELSE blockStatement)?		# conditionalTree
 	;
 arrayFunctions:
 	LEN		# arrayLen
@@ -67,6 +67,7 @@ functionParameters:
 	IDENTIFIER (COMMA IDENTIFIER)* # functionParametersTree
 	;
 hashContent : expression COLON expression # hashPairTree;
-expressionList: (expression (COMMA expression)*)? # expressionListTree
+expressionList:
+	expression (COMMA expression)* # expressionListTree
 	;
 blockStatement : L_CURLY statement* R_CURLY # blockTree;
