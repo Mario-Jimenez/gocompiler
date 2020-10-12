@@ -98,7 +98,7 @@ type MonkeyParserVisitor interface {
 	// Visit a parse tree produced by MonkeyParser#printTree.
 	VisitPrintTree(ctx *PrintTreeContext) interface{}
 
-	// Visit a parse tree produced by MonkeyParser#ConditionalTree.
+	// Visit a parse tree produced by MonkeyParser#conditionalTree.
 	VisitConditionalTree(ctx *ConditionalTreeContext) interface{}
 
 	// Visit a parse tree produced by MonkeyParser#arrayLen.

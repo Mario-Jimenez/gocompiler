@@ -23,11 +23,12 @@ func (*Monkey) Compile(c *gin.Context) {
 	// parse incoming request
 	var req Compile
 	if err := c.ShouldBindJSON(&req); err != nil {
-		// response with error
+		// response with error, bad request, missing program parameter
 		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"message": "Bad request"})
 		return
 	}
 
+	// parsing
 	parseErrors, parseLines, parseTree := parsing(req.Program)
 
 	// response
@@ -60,6 +61,7 @@ func parsing(program string) ([]string, []int, interface{}) {
 	// initial rule to start parsing process
 	tree := parser.Program()
 
+	// parser tree visitor
 	visitor := visitor.NewMonkeyVisitor()
 	parseTree := visitor.Visit(tree)
 
