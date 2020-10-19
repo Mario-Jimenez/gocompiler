@@ -45,7 +45,7 @@ callExpression:
 primitiveExpression:
 	INTEGER														# integer
 	| STRING													# string
-	| IDENTIFIER												# identifier
+	| identifier												# identifierTree
 	| TRUE														# true
 	| FALSE														# false
 	| L_PAREN expression R_PAREN								# groupedExpressionTree
@@ -71,3 +71,7 @@ expressionList:
 	expression (COMMA expression)* # expressionListTree
 	;
 blockStatement : L_CURLY statement* R_CURLY # blockTree;
+identifier
+	locals[declaration:*LetStatementTreeContext]:
+	IDENTIFIER # identifierNode
+	;

@@ -10,7 +10,7 @@ import (
 	primitiveExpression:
 		INTEGER														# integer
 		| STRING													# string
-		| IDENTIFIER												# identifier
+		| identifier												# identifierTree
 		| TRUE														# true
 		| FALSE														# false
 		| L_PAREN expression R_PAREN								# groupedExpressionTree
@@ -37,11 +37,21 @@ func (v *monkeyVisitor) VisitString(ctx *parser.StringContext) interface{} {
 	}
 }
 
-func (v *monkeyVisitor) VisitIdentifier(ctx *parser.IdentifierContext) interface{} {
-	return &visitResponse{
-		node:   childNode(ctx.IDENTIFIER().GetText(), terminalColor),
-		failed: false,
+func (v *monkeyVisitor) VisitIdentifierTree(ctx *parser.IdentifierTreeContext) interface{} {
+	hasError := false
+	children := []map[string]interface{}{}
+
+	node := v.Visit(ctx.Identifier())
+	if n, ok := node.(*visitResponse); ok {
+		if n.hasFailed() {
+			hasError = true
+		}
+		children = append(children, n.info())
+	} else {
+		hasError = true
 	}
+
+	return nodeResponse("IdentifierTree", hasError, children)
 }
 
 func (v *monkeyVisitor) VisitTrue(ctx *parser.TrueContext) interface{} {

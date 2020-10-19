@@ -3,7 +3,9 @@ package handler
 import (
 	"net/http"
 
+	"github.com/Mario-Jimenez/gocompiler/contextual"
 	"github.com/Mario-Jimenez/gocompiler/errors"
+	"github.com/Mario-Jimenez/gocompiler/identification"
 	"github.com/Mario-Jimenez/gocompiler/parser"
 	"github.com/Mario-Jimenez/gocompiler/visitor"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
@@ -66,7 +68,16 @@ func parsing(program string) ([]string, []int, interface{}) {
 	parseTree := visitor.Visit(tree)
 
 	if parserErrors.Errors() == nil {
-		return []string{}, []int{}, parseTree
+		// contextual analysis visitor
+		table := identification.NewTable()
+		ctxVisitor := contextual.NewContextualVisitor(table)
+		ctxVisitor.Visit(tree)
+
+		if table.Errors() == nil {
+			return []string{}, []int{}, parseTree
+		}
+
+		return table.Errors(), table.Lines(), parseTree
 	}
 
 	return parserErrors.Errors(), parserErrors.Lines(), parseTree
