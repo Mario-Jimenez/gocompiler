@@ -44,6 +44,6 @@ Base URL: http://locahost:4440/monkeycompiler
 {
     "errors": []string,
     "lines": []int,
+    "tree": {...},
 }
 ```
-

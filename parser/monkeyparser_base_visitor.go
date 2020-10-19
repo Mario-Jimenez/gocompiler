@@ -92,7 +92,7 @@ func (v *BaseMonkeyParserVisitor) VisitString(ctx *StringContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseMonkeyParserVisitor) VisitIdentifier(ctx *IdentifierContext) interface{} {
+func (v *BaseMonkeyParserVisitor) VisitIdentifierTree(ctx *IdentifierTreeContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -165,5 +165,9 @@ func (v *BaseMonkeyParserVisitor) VisitExpressionListTree(ctx *ExpressionListTre
 }
 
 func (v *BaseMonkeyParserVisitor) VisitBlockTree(ctx *BlockTreeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseMonkeyParserVisitor) VisitIdentifierNode(ctx *IdentifierNodeContext) interface{} {
 	return v.VisitChildren(ctx)
 }
