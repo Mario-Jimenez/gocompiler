@@ -188,11 +188,12 @@ func (v *monkeyVisitor) VisitArrayFunctionTree(ctx *parser.ArrayFunctionTreeCont
 	return nodeResponse("ArrayFunctionTree", hasError, children)
 }
 
-func (v *monkeyVisitor) VisitFunctionTree(ctx *parser.FunctionTreeContext) interface{} {
+func (v *monkeyVisitor) VisitFunctionATree(ctx *parser.FunctionATreeContext) interface{} {
 	hasError := false
 	children := []map[string]interface{}{}
 
-	children = append(children, childNode(ctx.FUNC().GetText(), terminalColor))
+	//TODO: REVISAR
+	v.Visit(ctx.Function())
 
 	if ctx.L_PAREN() != nil {
 		if !strings.Contains(ctx.L_PAREN().GetText(), "<missing") {

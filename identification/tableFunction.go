@@ -6,22 +6,22 @@ import (
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
-// Table of declarations
-type Table struct {
-	table      map[int]map[string]*attribute
+// TableFunction of declarations
+type TableFunction struct {
+	table      map[int]map[string]*attributeFunction
 	level      int
 	errorList  []string
 	errorlines []int
 }
 
-func NewTable() *Table {
-	return &Table{
-		table: map[int]map[string]*attribute{},
+func NewTableFunction() *TableFunction {
+	return &TableFunction{
+		table: map[int]map[string]*attributeFunction{},
 	}
 }
 
 // c.currentToken.GetLine(), c.currentToken.GetTokenSource().GetCharPositionInLine()
-func (t *Table) Enter(id string, attr *attribute) {
+func (t *TableFunction) Enter(id string, attr *attributeFunction) {
 	if _, ok := t.table[t.level][id]; ok {
 		return
 	}
@@ -29,13 +29,15 @@ func (t *Table) Enter(id string, attr *attribute) {
 	t.table[t.level][id] = attr
 }
 
-func (t *Table) Retrieve(token antlr.Token) *attribute {
+func (t *TableFunction) Retrieve(token antlr.Token, parametersCount int) *attributeFunction {
 	id := token.GetText()
 	tempLevel := t.level
 	for tempLevel > 0 {
 		if attr, ok := t.table[tempLevel][id]; ok {
-			attr.setVisited()
-			return attr
+			if attr.parameters == parametersCount {
+				attr.setVisited()
+				return attr
+			}
 		}
 		tempLevel--
 	}
@@ -47,11 +49,11 @@ func (t *Table) Retrieve(token antlr.Token) *attribute {
 	return nil
 }
 
-func (t *Table) OpenScope() {
+func (t *TableFunction) OpenScope() {
 	t.level++
-	t.table[t.level] = map[string]*attribute{}
+	t.table[t.level] = map[string]*attributeFunction{}
 }
-func (t *Table) CloseScope() {
+func (t *TableFunction) CloseScope() {
 	for _, declaration := range t.table[t.level] {
 		if !declaration.wasVisited() {
 			token := declaration.getToken()
@@ -64,20 +66,20 @@ func (t *Table) CloseScope() {
 	t.level--
 }
 
-func (t *Table) addError(newError string) {
+func (t *TableFunction) addError(newError string) {
 	t.errorList = append(t.errorList, newError)
 }
 
-func (t *Table) addLine(newLine int) {
+func (t *TableFunction) addLine(newLine int) {
 	t.errorlines = append(t.errorlines, newLine)
 }
 
 // Errors
-func (t *Table) Errors() []string {
+func (t *TableFunction) Errors() []string {
 	return t.errorList
 }
 
 // Lines
-func (t *Table) Lines() []int {
+func (t *TableFunction) Lines() []int {
 	return t.errorlines
 }

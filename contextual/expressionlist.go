@@ -16,6 +16,8 @@ func (v *contextualVisitor) VisitExpressionListTree(ctx *parser.ExpressionListTr
 	// node.(*visitResponse)
 
 	totalBranches := len(ctx.AllExpression())
+	v.callParameters = totalBranches
+
 	index := 1
 	for index < totalBranches {
 		ctx.COMMA(index - 1).GetText()

@@ -51,7 +51,7 @@ primitiveExpression:
 	| L_PAREN expression R_PAREN								# groupedExpressionTree
 	| L_BRACKET expressionList? R_BRACKET						# arrayTree
 	| arrayFunctions L_PAREN expressionList? R_PAREN			# arrayFunctionTree
-	| FUNC L_PAREN functionParameters R_PAREN blockStatement	# functionTree
+	| function L_PAREN functionParameters R_PAREN blockStatement	# functionATree
 	| L_CURLY hashContent (COMMA hashContent)* R_CURLY			# hashObjectTree
 	| PUTS L_PAREN expression R_PAREN							# printTree
 	| IF expression blockStatement (ELSE blockStatement)?		# conditionalTree
@@ -74,4 +74,8 @@ blockStatement : L_CURLY statement* R_CURLY # blockTree;
 identifier
 	locals[declaration:*LetStatementTreeContext]:
 	IDENTIFIER # identifierNode
+	;
+function
+	locals[declaration: *FunctionATreeContext]:
+	FUNC # functionNode
 	;

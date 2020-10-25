@@ -25,5 +25,13 @@ func (v *contextualVisitor) VisitElementTree(ctx *parser.ElementTreeContext) int
 		// node.(*visitResponse)
 	}
 
+	if v.isIdentifier {
+		if v.isCall {
+			v.functionTable.Retrieve(v.identifierToken, v.callParameters)
+		} else {
+			v.identificationTable.Retrieve(v.identifierToken)
+		}
+	}
+
 	return nil
 }

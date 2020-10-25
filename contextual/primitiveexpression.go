@@ -97,10 +97,11 @@ func (v *contextualVisitor) VisitArrayFunctionTree(ctx *parser.ArrayFunctionTree
 	return nil
 }
 
-func (v *contextualVisitor) VisitFunctionTree(ctx *parser.FunctionTreeContext) interface{} {
+func (v *contextualVisitor) VisitFunctionATree(ctx *parser.FunctionATreeContext) interface{} {
 	v.identificationTable.OpenScope()
 
-	ctx.FUNC().GetText()
+	//TODO: REVISAR
+	v.Visit(ctx.Function())
 
 	if ctx.L_PAREN() != nil {
 		ctx.L_PAREN().GetText()
@@ -115,6 +116,8 @@ func (v *contextualVisitor) VisitFunctionTree(ctx *parser.FunctionTreeContext) i
 	if ctx.R_PAREN() != nil {
 		ctx.R_PAREN().GetText()
 	}
+
+	v.isFunction = true
 
 	if ctx.BlockStatement() != nil {
 		v.Visit(ctx.BlockStatement())

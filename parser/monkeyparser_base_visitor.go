@@ -116,7 +116,7 @@ func (v *BaseMonkeyParserVisitor) VisitArrayFunctionTree(ctx *ArrayFunctionTreeC
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseMonkeyParserVisitor) VisitFunctionTree(ctx *FunctionTreeContext) interface{} {
+func (v *BaseMonkeyParserVisitor) VisitFunctionATree(ctx *FunctionATreeContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -169,5 +169,9 @@ func (v *BaseMonkeyParserVisitor) VisitBlockTree(ctx *BlockTreeContext) interfac
 }
 
 func (v *BaseMonkeyParserVisitor) VisitIdentifierNode(ctx *IdentifierNodeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseMonkeyParserVisitor) VisitFunctionNode(ctx *FunctionNodeContext) interface{} {
 	return v.VisitChildren(ctx)
 }

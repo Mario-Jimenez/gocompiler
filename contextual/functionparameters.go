@@ -21,6 +21,8 @@ func (v *contextualVisitor) VisitFunctionParametersTree(ctx *parser.FunctionPara
 	}
 
 	totalBranches := len(ctx.AllIDENTIFIER())
+	v.parametersCount = totalBranches
+
 	index := 1
 	for index < totalBranches {
 		ctx.COMMA(index - 1).GetText()

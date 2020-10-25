@@ -15,8 +15,14 @@ import (
 
 func (v *contextualVisitor) VisitLetStatementTree(ctx *parser.LetStatementTreeContext) interface{} {
 	token := ctx.IDENTIFIER().GetSymbol()
-	attr := identification.NewAttribute(token, ctx)
-	v.identificationTable.Enter(ctx.IDENTIFIER().GetText(), attr)
+	if v.isFunction {
+		attr := identification.NewAttributeFunction(token, v.parametersCount)
+		v.functionTable.Enter(ctx.IDENTIFIER().GetText(), attr)
+		v.isFunction = false
+	} else {
+		attr := identification.NewAttribute(token, ctx)
+		v.identificationTable.Enter(ctx.IDENTIFIER().GetText(), attr)
+	}
 
 	ctx.LET().GetText()
 

@@ -13,6 +13,8 @@ import (
 func (v *contextualVisitor) VisitFunctionCallTree(ctx *parser.FunctionCallTreeContext) interface{} {
 	ctx.L_PAREN().GetText()
 
+	v.isCall = true
+
 	if ctx.ExpressionList() != nil {
 		v.Visit(ctx.ExpressionList())
 		// node :=

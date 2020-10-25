@@ -14,5 +14,8 @@ func (v *contextualVisitor) VisitIdentifierNode(ctx *parser.IdentifierNodeContex
 		ctx.SetDeclaration(attr.Declaration())
 	}
 
+	v.isIdentifier = true
+	v.identifierToken = ctx.IDENTIFIER().GetSymbol()
+
 	return nil
 }
