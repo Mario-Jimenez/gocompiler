@@ -16,104 +16,6 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-<<<<<<< HEAD
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 41, 216,
-	4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7,
-	4, 8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 4, 13,
-	9, 13, 4, 14, 9, 14, 4, 15, 9, 15, 4, 16, 9, 16, 4, 17, 9, 17, 4, 18, 9,
-	18, 4, 19, 9, 19, 4, 20, 9, 20, 3, 2, 7, 2, 42, 10, 2, 12, 2, 14, 2, 45,
-	11, 2, 3, 2, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 3, 54, 10, 3, 3, 3,
-	3, 3, 3, 3, 5, 3, 59, 10, 3, 3, 3, 3, 3, 5, 3, 63, 10, 3, 5, 3, 65, 10,
-	3, 3, 4, 3, 4, 3, 4, 3, 4, 7, 4, 71, 10, 4, 12, 4, 14, 4, 74, 11, 4, 3,
-	5, 3, 5, 3, 5, 3, 5, 3, 5, 5, 5, 81, 10, 5, 3, 6, 3, 6, 3, 6, 3, 6, 7,
-	6, 87, 10, 6, 12, 6, 14, 6, 90, 11, 6, 3, 7, 3, 7, 5, 7, 94, 10, 7, 3,
-	8, 3, 8, 3, 8, 3, 8, 7, 8, 100, 10, 8, 12, 8, 14, 8, 103, 11, 8, 3, 9,
-	3, 9, 5, 9, 107, 10, 9, 3, 10, 3, 10, 3, 10, 5, 10, 112, 10, 10, 3, 11,
-	3, 11, 3, 11, 3, 11, 3, 12, 3, 12, 5, 12, 120, 10, 12, 3, 12, 3, 12, 3,
-	13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13,
-	5, 13, 135, 10, 13, 3, 13, 3, 13, 3, 13, 3, 13, 5, 13, 141, 10, 13, 3,
-	13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13,
-	3, 13, 7, 13, 155, 10, 13, 12, 13, 14, 13, 158, 11, 13, 3, 13, 3, 13, 3,
-	13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 3, 13, 5, 13,
-	172, 10, 13, 5, 13, 174, 10, 13, 3, 14, 3, 14, 3, 14, 3, 14, 3, 14, 5,
-	14, 181, 10, 14, 3, 15, 3, 15, 3, 15, 7, 15, 186, 10, 15, 12, 15, 14, 15,
-	189, 11, 15, 3, 16, 3, 16, 3, 16, 3, 16, 3, 17, 3, 17, 3, 17, 7, 17, 198,
-	10, 17, 12, 17, 14, 17, 201, 11, 17, 3, 18, 3, 18, 7, 18, 205, 10, 18,
-	12, 18, 14, 18, 208, 11, 18, 3, 18, 3, 18, 3, 19, 3, 19, 3, 20, 3, 20,
-	3, 20, 2, 2, 21, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30,
-	32, 34, 36, 38, 2, 2, 2, 236, 2, 43, 3, 2, 2, 2, 4, 64, 3, 2, 2, 2, 6,
-	66, 3, 2, 2, 2, 8, 80, 3, 2, 2, 2, 10, 82, 3, 2, 2, 2, 12, 93, 3, 2, 2,
-	2, 14, 95, 3, 2, 2, 2, 16, 106, 3, 2, 2, 2, 18, 108, 3, 2, 2, 2, 20, 113,
-	3, 2, 2, 2, 22, 117, 3, 2, 2, 2, 24, 173, 3, 2, 2, 2, 26, 180, 3, 2, 2,
-	2, 28, 182, 3, 2, 2, 2, 30, 190, 3, 2, 2, 2, 32, 194, 3, 2, 2, 2, 34, 202,
-	3, 2, 2, 2, 36, 211, 3, 2, 2, 2, 38, 213, 3, 2, 2, 2, 40, 42, 5, 4, 3,
-	2, 41, 40, 3, 2, 2, 2, 42, 45, 3, 2, 2, 2, 43, 41, 3, 2, 2, 2, 43, 44,
-	3, 2, 2, 2, 44, 46, 3, 2, 2, 2, 45, 43, 3, 2, 2, 2, 46, 47, 7, 2, 2, 3,
-	47, 3, 3, 2, 2, 2, 48, 49, 7, 24, 2, 2, 49, 50, 7, 35, 2, 2, 50, 51, 7,
-	13, 2, 2, 51, 53, 5, 6, 4, 2, 52, 54, 7, 3, 2, 2, 53, 52, 3, 2, 2, 2, 53,
-	54, 3, 2, 2, 2, 54, 65, 3, 2, 2, 2, 55, 56, 7, 25, 2, 2, 56, 58, 5, 6,
-	4, 2, 57, 59, 7, 3, 2, 2, 58, 57, 3, 2, 2, 2, 58, 59, 3, 2, 2, 2, 59, 65,
-	3, 2, 2, 2, 60, 62, 5, 6, 4, 2, 61, 63, 7, 3, 2, 2, 62, 61, 3, 2, 2, 2,
-	62, 63, 3, 2, 2, 2, 63, 65, 3, 2, 2, 2, 64, 48, 3, 2, 2, 2, 64, 55, 3,
-	2, 2, 2, 64, 60, 3, 2, 2, 2, 65, 5, 3, 2, 2, 2, 66, 72, 5, 10, 6, 2, 67,
-	68, 5, 8, 5, 2, 68, 69, 5, 10, 6, 2, 69, 71, 3, 2, 2, 2, 70, 67, 3, 2,
-	2, 2, 71, 74, 3, 2, 2, 2, 72, 70, 3, 2, 2, 2, 72, 73, 3, 2, 2, 2, 73, 7,
-	3, 2, 2, 2, 74, 72, 3, 2, 2, 2, 75, 81, 7, 16, 2, 2, 76, 81, 7, 17, 2,
-	2, 77, 81, 7, 14, 2, 2, 78, 81, 7, 15, 2, 2, 79, 81, 7, 12, 2, 2, 80, 75,
-	3, 2, 2, 2, 80, 76, 3, 2, 2, 2, 80, 77, 3, 2, 2, 2, 80, 78, 3, 2, 2, 2,
-	80, 79, 3, 2, 2, 2, 81, 9, 3, 2, 2, 2, 82, 88, 5, 14, 8, 2, 83, 84, 5,
-	12, 7, 2, 84, 85, 5, 14, 8, 2, 85, 87, 3, 2, 2, 2, 86, 83, 3, 2, 2, 2,
-	87, 90, 3, 2, 2, 2, 88, 86, 3, 2, 2, 2, 88, 89, 3, 2, 2, 2, 89, 11, 3,
-	2, 2, 2, 90, 88, 3, 2, 2, 2, 91, 94, 7, 18, 2, 2, 92, 94, 7, 19, 2, 2,
-	93, 91, 3, 2, 2, 2, 93, 92, 3, 2, 2, 2, 94, 13, 3, 2, 2, 2, 95, 101, 5,
-	18, 10, 2, 96, 97, 5, 16, 9, 2, 97, 98, 5, 18, 10, 2, 98, 100, 3, 2, 2,
-	2, 99, 96, 3, 2, 2, 2, 100, 103, 3, 2, 2, 2, 101, 99, 3, 2, 2, 2, 101,
-	102, 3, 2, 2, 2, 102, 15, 3, 2, 2, 2, 103, 101, 3, 2, 2, 2, 104, 107, 7,
-	20, 2, 2, 105, 107, 7, 21, 2, 2, 106, 104, 3, 2, 2, 2, 106, 105, 3, 2,
-	2, 2, 107, 17, 3, 2, 2, 2, 108, 111, 5, 24, 13, 2, 109, 112, 5, 20, 11,
-	2, 110, 112, 5, 22, 12, 2, 111, 109, 3, 2, 2, 2, 111, 110, 3, 2, 2, 2,
-	111, 112, 3, 2, 2, 2, 112, 19, 3, 2, 2, 2, 113, 114, 7, 8, 2, 2, 114, 115,
-	5, 6, 4, 2, 115, 116, 7, 9, 2, 2, 116, 21, 3, 2, 2, 2, 117, 119, 7, 6,
-	2, 2, 118, 120, 5, 32, 17, 2, 119, 118, 3, 2, 2, 2, 119, 120, 3, 2, 2,
-	2, 120, 121, 3, 2, 2, 2, 121, 122, 7, 7, 2, 2, 122, 23, 3, 2, 2, 2, 123,
-	174, 7, 36, 2, 2, 124, 174, 7, 37, 2, 2, 125, 174, 5, 36, 19, 2, 126, 174,
-	7, 26, 2, 2, 127, 174, 7, 27, 2, 2, 128, 129, 7, 6, 2, 2, 129, 130, 5,
-	6, 4, 2, 130, 131, 7, 7, 2, 2, 131, 174, 3, 2, 2, 2, 132, 134, 7, 8, 2,
-	2, 133, 135, 5, 32, 17, 2, 134, 133, 3, 2, 2, 2, 134, 135, 3, 2, 2, 2,
-	135, 136, 3, 2, 2, 2, 136, 174, 7, 9, 2, 2, 137, 138, 5, 26, 14, 2, 138,
-	140, 7, 6, 2, 2, 139, 141, 5, 32, 17, 2, 140, 139, 3, 2, 2, 2, 140, 141,
-	3, 2, 2, 2, 141, 142, 3, 2, 2, 2, 142, 143, 7, 7, 2, 2, 143, 174, 3, 2,
-	2, 2, 144, 145, 5, 38, 20, 2, 145, 146, 7, 6, 2, 2, 146, 147, 5, 28, 15,
-	2, 147, 148, 7, 7, 2, 2, 148, 149, 5, 34, 18, 2, 149, 174, 3, 2, 2, 2,
-	150, 151, 7, 10, 2, 2, 151, 156, 5, 30, 16, 2, 152, 153, 7, 5, 2, 2, 153,
-	155, 5, 30, 16, 2, 154, 152, 3, 2, 2, 2, 155, 158, 3, 2, 2, 2, 156, 154,
-	3, 2, 2, 2, 156, 157, 3, 2, 2, 2, 157, 159, 3, 2, 2, 2, 158, 156, 3, 2,
-	2, 2, 159, 160, 7, 11, 2, 2, 160, 174, 3, 2, 2, 2, 161, 162, 7, 28, 2,
-	2, 162, 163, 7, 6, 2, 2, 163, 164, 5, 6, 4, 2, 164, 165, 7, 7, 2, 2, 165,
-	174, 3, 2, 2, 2, 166, 167, 7, 22, 2, 2, 167, 168, 5, 6, 4, 2, 168, 171,
-	5, 34, 18, 2, 169, 170, 7, 23, 2, 2, 170, 172, 5, 34, 18, 2, 171, 169,
-	3, 2, 2, 2, 171, 172, 3, 2, 2, 2, 172, 174, 3, 2, 2, 2, 173, 123, 3, 2,
-	2, 2, 173, 124, 3, 2, 2, 2, 173, 125, 3, 2, 2, 2, 173, 126, 3, 2, 2, 2,
-	173, 127, 3, 2, 2, 2, 173, 128, 3, 2, 2, 2, 173, 132, 3, 2, 2, 2, 173,
-	137, 3, 2, 2, 2, 173, 144, 3, 2, 2, 2, 173, 150, 3, 2, 2, 2, 173, 161,
-	3, 2, 2, 2, 173, 166, 3, 2, 2, 2, 174, 25, 3, 2, 2, 2, 175, 181, 7, 30,
-	2, 2, 176, 181, 7, 31, 2, 2, 177, 181, 7, 32, 2, 2, 178, 181, 7, 33, 2,
-	2, 179, 181, 7, 34, 2, 2, 180, 175, 3, 2, 2, 2, 180, 176, 3, 2, 2, 2, 180,
-	177, 3, 2, 2, 2, 180, 178, 3, 2, 2, 2, 180, 179, 3, 2, 2, 2, 181, 27, 3,
-	2, 2, 2, 182, 187, 7, 35, 2, 2, 183, 184, 7, 5, 2, 2, 184, 186, 7, 35,
-	2, 2, 185, 183, 3, 2, 2, 2, 186, 189, 3, 2, 2, 2, 187, 185, 3, 2, 2, 2,
-	187, 188, 3, 2, 2, 2, 188, 29, 3, 2, 2, 2, 189, 187, 3, 2, 2, 2, 190, 191,
-	5, 6, 4, 2, 191, 192, 7, 4, 2, 2, 192, 193, 5, 6, 4, 2, 193, 31, 3, 2,
-	2, 2, 194, 199, 5, 6, 4, 2, 195, 196, 7, 5, 2, 2, 196, 198, 5, 6, 4, 2,
-	197, 195, 3, 2, 2, 2, 198, 201, 3, 2, 2, 2, 199, 197, 3, 2, 2, 2, 199,
-	200, 3, 2, 2, 2, 200, 33, 3, 2, 2, 2, 201, 199, 3, 2, 2, 2, 202, 206, 7,
-	10, 2, 2, 203, 205, 5, 4, 3, 2, 204, 203, 3, 2, 2, 2, 205, 208, 3, 2, 2,
-	2, 206, 204, 3, 2, 2, 2, 206, 207, 3, 2, 2, 2, 207, 209, 3, 2, 2, 2, 208,
-	206, 3, 2, 2, 2, 209, 210, 7, 11, 2, 2, 210, 35, 3, 2, 2, 2, 211, 212,
-	7, 35, 2, 2, 212, 37, 3, 2, 2, 2, 213, 214, 7, 29, 2, 2, 214, 39, 3, 2,
-	2, 2, 24, 43, 53, 58, 62, 64, 72, 80, 88, 93, 101, 106, 111, 119, 134,
-	140, 156, 171, 173, 180, 187, 199, 206,
-=======
 	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 41, 208,
 	4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7,
 	4, 8, 9, 8, 4, 9, 9, 9, 4, 10, 9, 10, 4, 11, 9, 11, 4, 12, 9, 12, 4, 13,
@@ -207,7 +109,6 @@ var parserATN = []uint16{
 	3, 2, 2, 2, 204, 202, 3, 2, 2, 2, 205, 206, 7, 11, 2, 2, 206, 35, 3, 2,
 	2, 2, 24, 39, 49, 54, 58, 60, 68, 76, 84, 89, 97, 102, 107, 115, 130, 136,
 	152, 167, 169, 176, 183, 195, 202,
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
@@ -232,10 +133,6 @@ var ruleNames = []string{
 	"additionFactor", "multiplicationExpression", "multiplicationFactor", "elementExpression",
 	"elementAccess", "callExpression", "primitiveExpression", "arrayFunctions",
 	"functionParameters", "hashContent", "expressionList", "blockStatement",
-<<<<<<< HEAD
-	"identifier", "function",
-=======
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -326,11 +223,6 @@ const (
 	MonkeyParserRULE_hashContent              = 14
 	MonkeyParserRULE_expressionList           = 15
 	MonkeyParserRULE_blockStatement           = 16
-<<<<<<< HEAD
-	MonkeyParserRULE_identifier               = 17
-	MonkeyParserRULE_function                 = 18
-=======
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 )
 
 // IProgramContext is an interface to support dynamic dispatch.
@@ -461,38 +353,22 @@ func (p *MonkeyParser) Program() (localctx IProgramContext) {
 
 	localctx = NewProgramTreeContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
-<<<<<<< HEAD
-	p.SetState(41)
-=======
 	p.SetState(37)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ((_la-4)&-(0x1f+1)) == 0 && ((1<<uint((_la-4)))&((1<<(MonkeyParserL_PAREN-4))|(1<<(MonkeyParserL_BRACKET-4))|(1<<(MonkeyParserL_CURLY-4))|(1<<(MonkeyParserIF-4))|(1<<(MonkeyParserLET-4))|(1<<(MonkeyParserRETURN-4))|(1<<(MonkeyParserTRUE-4))|(1<<(MonkeyParserFALSE-4))|(1<<(MonkeyParserPUTS-4))|(1<<(MonkeyParserFUNC-4))|(1<<(MonkeyParserLEN-4))|(1<<(MonkeyParserFIRST-4))|(1<<(MonkeyParserLAST-4))|(1<<(MonkeyParserREST-4))|(1<<(MonkeyParserPUSH-4))|(1<<(MonkeyParserIDENTIFIER-4))|(1<<(MonkeyParserINTEGER-4))|(1<<(MonkeyParserSTRING-4)))) != 0 {
 		{
-<<<<<<< HEAD
-			p.SetState(38)
-			p.Statement()
-		}
-
-		p.SetState(43)
-=======
 			p.SetState(34)
 			p.Statement()
 		}
 
 		p.SetState(39)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-<<<<<<< HEAD
-		p.SetState(44)
-=======
 		p.SetState(40)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.Match(MonkeyParserEOF)
 	}
 
@@ -712,11 +588,7 @@ func (p *MonkeyParser) Statement() (localctx IStatementContext) {
 		}
 	}()
 
-<<<<<<< HEAD
-	p.SetState(62)
-=======
 	p.SetState(58)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
@@ -724,24 +596,6 @@ func (p *MonkeyParser) Statement() (localctx IStatementContext) {
 		localctx = NewLetStatementTreeContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-<<<<<<< HEAD
-			p.SetState(46)
-			p.Match(MonkeyParserLET)
-		}
-		{
-			p.SetState(47)
-			p.Match(MonkeyParserIDENTIFIER)
-		}
-		{
-			p.SetState(48)
-			p.Match(MonkeyParserASSIGN)
-		}
-		{
-			p.SetState(49)
-			p.Expression()
-		}
-		p.SetState(51)
-=======
 			p.SetState(42)
 			p.Match(MonkeyParserLET)
 		}
@@ -758,17 +612,12 @@ func (p *MonkeyParser) Statement() (localctx IStatementContext) {
 			p.Expression()
 		}
 		p.SetState(47)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == MonkeyParserSEMI {
 			{
-<<<<<<< HEAD
-				p.SetState(50)
-=======
 				p.SetState(46)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 				p.Match(MonkeyParserSEMI)
 			}
 
@@ -778,16 +627,6 @@ func (p *MonkeyParser) Statement() (localctx IStatementContext) {
 		localctx = NewReturnStatementTreeContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-<<<<<<< HEAD
-			p.SetState(53)
-			p.Match(MonkeyParserRETURN)
-		}
-		{
-			p.SetState(54)
-			p.Expression()
-		}
-		p.SetState(56)
-=======
 			p.SetState(49)
 			p.Match(MonkeyParserRETURN)
 		}
@@ -796,17 +635,12 @@ func (p *MonkeyParser) Statement() (localctx IStatementContext) {
 			p.Expression()
 		}
 		p.SetState(52)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == MonkeyParserSEMI {
 			{
-<<<<<<< HEAD
-				p.SetState(55)
-=======
 				p.SetState(51)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 				p.Match(MonkeyParserSEMI)
 			}
 
@@ -816,27 +650,16 @@ func (p *MonkeyParser) Statement() (localctx IStatementContext) {
 		localctx = NewExpressionStatementTreeContext(p, localctx)
 		p.EnterOuterAlt(localctx, 3)
 		{
-<<<<<<< HEAD
-			p.SetState(58)
-			p.Expression()
-		}
-		p.SetState(60)
-=======
 			p.SetState(54)
 			p.Expression()
 		}
 		p.SetState(56)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == MonkeyParserSEMI {
 			{
-<<<<<<< HEAD
-				p.SetState(59)
-=======
 				p.SetState(55)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 				p.Match(MonkeyParserSEMI)
 			}
 
@@ -997,33 +820,15 @@ func (p *MonkeyParser) Expression() (localctx IExpressionContext) {
 	localctx = NewExpressionTreeContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-<<<<<<< HEAD
-		p.SetState(64)
-		p.AdditionExpression()
-	}
-	p.SetState(70)
-=======
 		p.SetState(60)
 		p.AdditionExpression()
 	}
 	p.SetState(66)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<MonkeyParserEQUALS)|(1<<MonkeyParserLESS_OR_EQUALS)|(1<<MonkeyParserGREATER_OR_EQUALS)|(1<<MonkeyParserLESS)|(1<<MonkeyParserGREATER))) != 0 {
 		{
-<<<<<<< HEAD
-			p.SetState(65)
-			p.Comparison()
-		}
-		{
-			p.SetState(66)
-			p.AdditionExpression()
-		}
-
-		p.SetState(72)
-=======
 			p.SetState(61)
 			p.Comparison()
 		}
@@ -1033,7 +838,6 @@ func (p *MonkeyParser) Expression() (localctx IExpressionContext) {
 		}
 
 		p.SetState(68)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -1271,11 +1075,7 @@ func (p *MonkeyParser) Comparison() (localctx IComparisonContext) {
 		}
 	}()
 
-<<<<<<< HEAD
-	p.SetState(78)
-=======
 	p.SetState(74)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
@@ -1283,11 +1083,7 @@ func (p *MonkeyParser) Comparison() (localctx IComparisonContext) {
 		localctx = NewLessComparisonContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-<<<<<<< HEAD
-			p.SetState(73)
-=======
 			p.SetState(69)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserLESS)
 		}
 
@@ -1295,11 +1091,7 @@ func (p *MonkeyParser) Comparison() (localctx IComparisonContext) {
 		localctx = NewGreaterComparisonContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-<<<<<<< HEAD
-			p.SetState(74)
-=======
 			p.SetState(70)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserGREATER)
 		}
 
@@ -1307,11 +1099,7 @@ func (p *MonkeyParser) Comparison() (localctx IComparisonContext) {
 		localctx = NewLessOrEqualsComparisonContext(p, localctx)
 		p.EnterOuterAlt(localctx, 3)
 		{
-<<<<<<< HEAD
-			p.SetState(75)
-=======
 			p.SetState(71)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserLESS_OR_EQUALS)
 		}
 
@@ -1319,11 +1107,7 @@ func (p *MonkeyParser) Comparison() (localctx IComparisonContext) {
 		localctx = NewGreaterOrEqualsComparisonContext(p, localctx)
 		p.EnterOuterAlt(localctx, 4)
 		{
-<<<<<<< HEAD
-			p.SetState(76)
-=======
 			p.SetState(72)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserGREATER_OR_EQUALS)
 		}
 
@@ -1331,11 +1115,7 @@ func (p *MonkeyParser) Comparison() (localctx IComparisonContext) {
 		localctx = NewEqualsComparisonContext(p, localctx)
 		p.EnterOuterAlt(localctx, 5)
 		{
-<<<<<<< HEAD
-			p.SetState(77)
-=======
 			p.SetState(73)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserEQUALS)
 		}
 
@@ -1494,33 +1274,15 @@ func (p *MonkeyParser) AdditionExpression() (localctx IAdditionExpressionContext
 	localctx = NewAdditionTreeContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-<<<<<<< HEAD
-		p.SetState(80)
-		p.MultiplicationExpression()
-	}
-	p.SetState(86)
-=======
 		p.SetState(76)
 		p.MultiplicationExpression()
 	}
 	p.SetState(82)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == MonkeyParserPLUS || _la == MonkeyParserMINUS {
 		{
-<<<<<<< HEAD
-			p.SetState(81)
-			p.AdditionFactor()
-		}
-		{
-			p.SetState(82)
-			p.MultiplicationExpression()
-		}
-
-		p.SetState(88)
-=======
 			p.SetState(77)
 			p.AdditionFactor()
 		}
@@ -1530,7 +1292,6 @@ func (p *MonkeyParser) AdditionExpression() (localctx IAdditionExpressionContext
 		}
 
 		p.SetState(84)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -1672,11 +1433,7 @@ func (p *MonkeyParser) AdditionFactor() (localctx IAdditionFactorContext) {
 		}
 	}()
 
-<<<<<<< HEAD
-	p.SetState(91)
-=======
 	p.SetState(87)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
@@ -1684,11 +1441,7 @@ func (p *MonkeyParser) AdditionFactor() (localctx IAdditionFactorContext) {
 		localctx = NewPlusOperatorContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-<<<<<<< HEAD
-			p.SetState(89)
-=======
 			p.SetState(85)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserPLUS)
 		}
 
@@ -1696,11 +1449,7 @@ func (p *MonkeyParser) AdditionFactor() (localctx IAdditionFactorContext) {
 		localctx = NewMinusOperatorContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-<<<<<<< HEAD
-			p.SetState(90)
-=======
 			p.SetState(86)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserMINUS)
 		}
 
@@ -1859,33 +1608,15 @@ func (p *MonkeyParser) MultiplicationExpression() (localctx IMultiplicationExpre
 	localctx = NewMultiplicationTreeContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-<<<<<<< HEAD
-		p.SetState(93)
-		p.ElementExpression()
-	}
-	p.SetState(99)
-=======
 		p.SetState(89)
 		p.ElementExpression()
 	}
 	p.SetState(95)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == MonkeyParserMULT || _la == MonkeyParserDIV {
 		{
-<<<<<<< HEAD
-			p.SetState(94)
-			p.MultiplicationFactor()
-		}
-		{
-			p.SetState(95)
-			p.ElementExpression()
-		}
-
-		p.SetState(101)
-=======
 			p.SetState(90)
 			p.MultiplicationFactor()
 		}
@@ -1895,7 +1626,6 @@ func (p *MonkeyParser) MultiplicationExpression() (localctx IMultiplicationExpre
 		}
 
 		p.SetState(97)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -2037,11 +1767,7 @@ func (p *MonkeyParser) MultiplicationFactor() (localctx IMultiplicationFactorCon
 		}
 	}()
 
-<<<<<<< HEAD
-	p.SetState(104)
-=======
 	p.SetState(100)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
@@ -2049,11 +1775,7 @@ func (p *MonkeyParser) MultiplicationFactor() (localctx IMultiplicationFactorCon
 		localctx = NewMultiplicationOperatorContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-<<<<<<< HEAD
-			p.SetState(102)
-=======
 			p.SetState(98)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserMULT)
 		}
 
@@ -2061,11 +1783,7 @@ func (p *MonkeyParser) MultiplicationFactor() (localctx IMultiplicationFactorCon
 		localctx = NewDivisionOperatorContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-<<<<<<< HEAD
-			p.SetState(103)
-=======
 			p.SetState(99)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserDIV)
 		}
 
@@ -2207,36 +1925,21 @@ func (p *MonkeyParser) ElementExpression() (localctx IElementExpressionContext) 
 	localctx = NewElementTreeContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-<<<<<<< HEAD
-		p.SetState(106)
-		p.PrimitiveExpression()
-	}
-	p.SetState(109)
-=======
 		p.SetState(102)
 		p.PrimitiveExpression()
 	}
 	p.SetState(105)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 
 	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 11, p.GetParserRuleContext()) == 1 {
 		{
-<<<<<<< HEAD
-			p.SetState(107)
-=======
 			p.SetState(103)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.ElementAccess()
 		}
 
 	} else if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 11, p.GetParserRuleContext()) == 2 {
 		{
-<<<<<<< HEAD
-			p.SetState(108)
-=======
 			p.SetState(104)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.CallExpression()
 		}
 
@@ -2364,17 +2067,6 @@ func (p *MonkeyParser) ElementAccess() (localctx IElementAccessContext) {
 	localctx = NewElementAccessTreeContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-<<<<<<< HEAD
-		p.SetState(111)
-		p.Match(MonkeyParserL_BRACKET)
-	}
-	{
-		p.SetState(112)
-		p.Expression()
-	}
-	{
-		p.SetState(113)
-=======
 		p.SetState(107)
 		p.Match(MonkeyParserL_BRACKET)
 	}
@@ -2384,7 +2076,6 @@ func (p *MonkeyParser) ElementAccess() (localctx IElementAccessContext) {
 	}
 	{
 		p.SetState(109)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.Match(MonkeyParserR_BRACKET)
 	}
 
@@ -2511,37 +2202,22 @@ func (p *MonkeyParser) CallExpression() (localctx ICallExpressionContext) {
 	localctx = NewFunctionCallTreeContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-<<<<<<< HEAD
-		p.SetState(115)
-		p.Match(MonkeyParserL_PAREN)
-	}
-	p.SetState(117)
-=======
 		p.SetState(111)
 		p.Match(MonkeyParserL_PAREN)
 	}
 	p.SetState(113)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	if ((_la-4)&-(0x1f+1)) == 0 && ((1<<uint((_la-4)))&((1<<(MonkeyParserL_PAREN-4))|(1<<(MonkeyParserL_BRACKET-4))|(1<<(MonkeyParserL_CURLY-4))|(1<<(MonkeyParserIF-4))|(1<<(MonkeyParserTRUE-4))|(1<<(MonkeyParserFALSE-4))|(1<<(MonkeyParserPUTS-4))|(1<<(MonkeyParserFUNC-4))|(1<<(MonkeyParserLEN-4))|(1<<(MonkeyParserFIRST-4))|(1<<(MonkeyParserLAST-4))|(1<<(MonkeyParserREST-4))|(1<<(MonkeyParserPUSH-4))|(1<<(MonkeyParserIDENTIFIER-4))|(1<<(MonkeyParserINTEGER-4))|(1<<(MonkeyParserSTRING-4)))) != 0 {
 		{
-<<<<<<< HEAD
-			p.SetState(116)
-=======
 			p.SetState(112)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.ExpressionList()
 		}
 
 	}
 	{
-<<<<<<< HEAD
-		p.SetState(119)
-=======
 		p.SetState(115)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.Match(MonkeyParserR_PAREN)
 	}
 
@@ -3179,11 +2855,7 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		}
 	}()
 
-<<<<<<< HEAD
-	p.SetState(171)
-=======
 	p.SetState(167)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
@@ -3191,11 +2863,7 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		localctx = NewIntegerContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-<<<<<<< HEAD
-			p.SetState(121)
-=======
 			p.SetState(117)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserINTEGER)
 		}
 
@@ -3203,11 +2871,7 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		localctx = NewStringContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-<<<<<<< HEAD
-			p.SetState(122)
-=======
 			p.SetState(118)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserSTRING)
 		}
 
@@ -3215,24 +2879,15 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		localctx = NewIdentifierContext(p, localctx)
 		p.EnterOuterAlt(localctx, 3)
 		{
-<<<<<<< HEAD
-			p.SetState(123)
-			p.Identifier()
-=======
 			p.SetState(119)
 			p.Match(MonkeyParserIDENTIFIER)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		}
 
 	case MonkeyParserTRUE:
 		localctx = NewTrueContext(p, localctx)
 		p.EnterOuterAlt(localctx, 4)
 		{
-<<<<<<< HEAD
-			p.SetState(124)
-=======
 			p.SetState(120)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserTRUE)
 		}
 
@@ -3240,11 +2895,7 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		localctx = NewFalseContext(p, localctx)
 		p.EnterOuterAlt(localctx, 5)
 		{
-<<<<<<< HEAD
-			p.SetState(125)
-=======
 			p.SetState(121)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserFALSE)
 		}
 
@@ -3252,17 +2903,6 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		localctx = NewGroupedExpressionTreeContext(p, localctx)
 		p.EnterOuterAlt(localctx, 6)
 		{
-<<<<<<< HEAD
-			p.SetState(126)
-			p.Match(MonkeyParserL_PAREN)
-		}
-		{
-			p.SetState(127)
-			p.Expression()
-		}
-		{
-			p.SetState(128)
-=======
 			p.SetState(122)
 			p.Match(MonkeyParserL_PAREN)
 		}
@@ -3272,7 +2912,6 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		}
 		{
 			p.SetState(124)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserR_PAREN)
 		}
 
@@ -3280,37 +2919,22 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		localctx = NewArrayTreeContext(p, localctx)
 		p.EnterOuterAlt(localctx, 7)
 		{
-<<<<<<< HEAD
-			p.SetState(130)
-			p.Match(MonkeyParserL_BRACKET)
-		}
-		p.SetState(132)
-=======
 			p.SetState(126)
 			p.Match(MonkeyParserL_BRACKET)
 		}
 		p.SetState(128)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if ((_la-4)&-(0x1f+1)) == 0 && ((1<<uint((_la-4)))&((1<<(MonkeyParserL_PAREN-4))|(1<<(MonkeyParserL_BRACKET-4))|(1<<(MonkeyParserL_CURLY-4))|(1<<(MonkeyParserIF-4))|(1<<(MonkeyParserTRUE-4))|(1<<(MonkeyParserFALSE-4))|(1<<(MonkeyParserPUTS-4))|(1<<(MonkeyParserFUNC-4))|(1<<(MonkeyParserLEN-4))|(1<<(MonkeyParserFIRST-4))|(1<<(MonkeyParserLAST-4))|(1<<(MonkeyParserREST-4))|(1<<(MonkeyParserPUSH-4))|(1<<(MonkeyParserIDENTIFIER-4))|(1<<(MonkeyParserINTEGER-4))|(1<<(MonkeyParserSTRING-4)))) != 0 {
 			{
-<<<<<<< HEAD
-				p.SetState(131)
-=======
 				p.SetState(127)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 				p.ExpressionList()
 			}
 
 		}
 		{
-<<<<<<< HEAD
-			p.SetState(134)
-=======
 			p.SetState(130)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserR_BRACKET)
 		}
 
@@ -3318,16 +2942,6 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		localctx = NewArrayFunctionTreeContext(p, localctx)
 		p.EnterOuterAlt(localctx, 8)
 		{
-<<<<<<< HEAD
-			p.SetState(135)
-			p.ArrayFunctions()
-		}
-		{
-			p.SetState(136)
-			p.Match(MonkeyParserL_PAREN)
-		}
-		p.SetState(138)
-=======
 			p.SetState(131)
 			p.ArrayFunctions()
 		}
@@ -3336,27 +2950,18 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 			p.Match(MonkeyParserL_PAREN)
 		}
 		p.SetState(134)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if ((_la-4)&-(0x1f+1)) == 0 && ((1<<uint((_la-4)))&((1<<(MonkeyParserL_PAREN-4))|(1<<(MonkeyParserL_BRACKET-4))|(1<<(MonkeyParserL_CURLY-4))|(1<<(MonkeyParserIF-4))|(1<<(MonkeyParserTRUE-4))|(1<<(MonkeyParserFALSE-4))|(1<<(MonkeyParserPUTS-4))|(1<<(MonkeyParserFUNC-4))|(1<<(MonkeyParserLEN-4))|(1<<(MonkeyParserFIRST-4))|(1<<(MonkeyParserLAST-4))|(1<<(MonkeyParserREST-4))|(1<<(MonkeyParserPUSH-4))|(1<<(MonkeyParserIDENTIFIER-4))|(1<<(MonkeyParserINTEGER-4))|(1<<(MonkeyParserSTRING-4)))) != 0 {
 			{
-<<<<<<< HEAD
-				p.SetState(137)
-=======
 				p.SetState(133)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 				p.ExpressionList()
 			}
 
 		}
 		{
-<<<<<<< HEAD
-			p.SetState(140)
-=======
 			p.SetState(136)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserR_PAREN)
 		}
 
@@ -3364,25 +2969,6 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		localctx = NewFunctionATreeContext(p, localctx)
 		p.EnterOuterAlt(localctx, 9)
 		{
-<<<<<<< HEAD
-			p.SetState(142)
-			p.Function()
-		}
-		{
-			p.SetState(143)
-			p.Match(MonkeyParserL_PAREN)
-		}
-		{
-			p.SetState(144)
-			p.FunctionParameters()
-		}
-		{
-			p.SetState(145)
-			p.Match(MonkeyParserR_PAREN)
-		}
-		{
-			p.SetState(146)
-=======
 			p.SetState(138)
 			p.Match(MonkeyParserFUNC)
 		}
@@ -3400,7 +2986,6 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		}
 		{
 			p.SetState(142)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.BlockStatement()
 		}
 
@@ -3408,16 +2993,6 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		localctx = NewHashObjectTreeContext(p, localctx)
 		p.EnterOuterAlt(localctx, 10)
 		{
-<<<<<<< HEAD
-			p.SetState(148)
-			p.Match(MonkeyParserL_CURLY)
-		}
-		{
-			p.SetState(149)
-			p.HashContent()
-		}
-		p.SetState(154)
-=======
 			p.SetState(144)
 			p.Match(MonkeyParserL_CURLY)
 		}
@@ -3426,23 +3001,11 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 			p.HashContent()
 		}
 		p.SetState(150)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		for _la == MonkeyParserCOMMA {
 			{
-<<<<<<< HEAD
-				p.SetState(150)
-				p.Match(MonkeyParserCOMMA)
-			}
-			{
-				p.SetState(151)
-				p.HashContent()
-			}
-
-			p.SetState(156)
-=======
 				p.SetState(146)
 				p.Match(MonkeyParserCOMMA)
 			}
@@ -3452,16 +3015,11 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 			}
 
 			p.SetState(152)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.GetErrorHandler().Sync(p)
 			_la = p.GetTokenStream().LA(1)
 		}
 		{
-<<<<<<< HEAD
-			p.SetState(157)
-=======
 			p.SetState(153)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserR_CURLY)
 		}
 
@@ -3469,21 +3027,6 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		localctx = NewPrintTreeContext(p, localctx)
 		p.EnterOuterAlt(localctx, 11)
 		{
-<<<<<<< HEAD
-			p.SetState(159)
-			p.Match(MonkeyParserPUTS)
-		}
-		{
-			p.SetState(160)
-			p.Match(MonkeyParserL_PAREN)
-		}
-		{
-			p.SetState(161)
-			p.Expression()
-		}
-		{
-			p.SetState(162)
-=======
 			p.SetState(155)
 			p.Match(MonkeyParserPUTS)
 		}
@@ -3497,7 +3040,6 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		}
 		{
 			p.SetState(158)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserR_PAREN)
 		}
 
@@ -3505,20 +3047,6 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 		localctx = NewConditionalTreeContext(p, localctx)
 		p.EnterOuterAlt(localctx, 12)
 		{
-<<<<<<< HEAD
-			p.SetState(164)
-			p.Match(MonkeyParserIF)
-		}
-		{
-			p.SetState(165)
-			p.Expression()
-		}
-		{
-			p.SetState(166)
-			p.BlockStatement()
-		}
-		p.SetState(169)
-=======
 			p.SetState(160)
 			p.Match(MonkeyParserIF)
 		}
@@ -3531,25 +3059,16 @@ func (p *MonkeyParser) PrimitiveExpression() (localctx IPrimitiveExpressionConte
 			p.BlockStatement()
 		}
 		p.SetState(165)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == MonkeyParserELSE {
 			{
-<<<<<<< HEAD
-				p.SetState(167)
-				p.Match(MonkeyParserELSE)
-			}
-			{
-				p.SetState(168)
-=======
 				p.SetState(163)
 				p.Match(MonkeyParserELSE)
 			}
 			{
 				p.SetState(164)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 				p.BlockStatement()
 			}
 
@@ -3792,11 +3311,7 @@ func (p *MonkeyParser) ArrayFunctions() (localctx IArrayFunctionsContext) {
 		}
 	}()
 
-<<<<<<< HEAD
-	p.SetState(178)
-=======
 	p.SetState(174)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
@@ -3804,11 +3319,7 @@ func (p *MonkeyParser) ArrayFunctions() (localctx IArrayFunctionsContext) {
 		localctx = NewArrayLenContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
-<<<<<<< HEAD
-			p.SetState(173)
-=======
 			p.SetState(169)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserLEN)
 		}
 
@@ -3816,11 +3327,7 @@ func (p *MonkeyParser) ArrayFunctions() (localctx IArrayFunctionsContext) {
 		localctx = NewArrayFirstContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
-<<<<<<< HEAD
-			p.SetState(174)
-=======
 			p.SetState(170)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserFIRST)
 		}
 
@@ -3828,11 +3335,7 @@ func (p *MonkeyParser) ArrayFunctions() (localctx IArrayFunctionsContext) {
 		localctx = NewArrayLastContext(p, localctx)
 		p.EnterOuterAlt(localctx, 3)
 		{
-<<<<<<< HEAD
-			p.SetState(175)
-=======
 			p.SetState(171)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserLAST)
 		}
 
@@ -3840,11 +3343,7 @@ func (p *MonkeyParser) ArrayFunctions() (localctx IArrayFunctionsContext) {
 		localctx = NewArrayRestContext(p, localctx)
 		p.EnterOuterAlt(localctx, 4)
 		{
-<<<<<<< HEAD
-			p.SetState(176)
-=======
 			p.SetState(172)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserREST)
 		}
 
@@ -3852,11 +3351,7 @@ func (p *MonkeyParser) ArrayFunctions() (localctx IArrayFunctionsContext) {
 		localctx = NewArrayPushContext(p, localctx)
 		p.EnterOuterAlt(localctx, 5)
 		{
-<<<<<<< HEAD
-			p.SetState(177)
-=======
 			p.SetState(173)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 			p.Match(MonkeyParserPUSH)
 		}
 
@@ -3985,33 +3480,15 @@ func (p *MonkeyParser) FunctionParameters() (localctx IFunctionParametersContext
 	localctx = NewFunctionParametersTreeContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-<<<<<<< HEAD
-		p.SetState(180)
-		p.Match(MonkeyParserIDENTIFIER)
-	}
-	p.SetState(185)
-=======
 		p.SetState(176)
 		p.Match(MonkeyParserIDENTIFIER)
 	}
 	p.SetState(181)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == MonkeyParserCOMMA {
 		{
-<<<<<<< HEAD
-			p.SetState(181)
-			p.Match(MonkeyParserCOMMA)
-		}
-		{
-			p.SetState(182)
-			p.Match(MonkeyParserIDENTIFIER)
-		}
-
-		p.SetState(187)
-=======
 			p.SetState(177)
 			p.Match(MonkeyParserCOMMA)
 		}
@@ -4021,7 +3498,6 @@ func (p *MonkeyParser) FunctionParameters() (localctx IFunctionParametersContext
 		}
 
 		p.SetState(183)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -4157,17 +3633,6 @@ func (p *MonkeyParser) HashContent() (localctx IHashContentContext) {
 	localctx = NewHashPairTreeContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-<<<<<<< HEAD
-		p.SetState(188)
-		p.Expression()
-	}
-	{
-		p.SetState(189)
-		p.Match(MonkeyParserCOLON)
-	}
-	{
-		p.SetState(190)
-=======
 		p.SetState(184)
 		p.Expression()
 	}
@@ -4177,7 +3642,6 @@ func (p *MonkeyParser) HashContent() (localctx IHashContentContext) {
 	}
 	{
 		p.SetState(186)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.Expression()
 	}
 
@@ -4317,33 +3781,15 @@ func (p *MonkeyParser) ExpressionList() (localctx IExpressionListContext) {
 	localctx = NewExpressionListTreeContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-<<<<<<< HEAD
-		p.SetState(192)
-		p.Expression()
-	}
-	p.SetState(197)
-=======
 		p.SetState(188)
 		p.Expression()
 	}
 	p.SetState(193)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == MonkeyParserCOMMA {
 		{
-<<<<<<< HEAD
-			p.SetState(193)
-			p.Match(MonkeyParserCOMMA)
-		}
-		{
-			p.SetState(194)
-			p.Expression()
-		}
-
-		p.SetState(199)
-=======
 			p.SetState(189)
 			p.Match(MonkeyParserCOMMA)
 		}
@@ -4353,7 +3799,6 @@ func (p *MonkeyParser) ExpressionList() (localctx IExpressionListContext) {
 		}
 
 		p.SetState(195)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -4494,297 +3939,27 @@ func (p *MonkeyParser) BlockStatement() (localctx IBlockStatementContext) {
 	localctx = NewBlockTreeContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
 	{
-<<<<<<< HEAD
-		p.SetState(200)
-		p.Match(MonkeyParserL_CURLY)
-	}
-	p.SetState(204)
-=======
 		p.SetState(196)
 		p.Match(MonkeyParserL_CURLY)
 	}
 	p.SetState(200)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ((_la-4)&-(0x1f+1)) == 0 && ((1<<uint((_la-4)))&((1<<(MonkeyParserL_PAREN-4))|(1<<(MonkeyParserL_BRACKET-4))|(1<<(MonkeyParserL_CURLY-4))|(1<<(MonkeyParserIF-4))|(1<<(MonkeyParserLET-4))|(1<<(MonkeyParserRETURN-4))|(1<<(MonkeyParserTRUE-4))|(1<<(MonkeyParserFALSE-4))|(1<<(MonkeyParserPUTS-4))|(1<<(MonkeyParserFUNC-4))|(1<<(MonkeyParserLEN-4))|(1<<(MonkeyParserFIRST-4))|(1<<(MonkeyParserLAST-4))|(1<<(MonkeyParserREST-4))|(1<<(MonkeyParserPUSH-4))|(1<<(MonkeyParserIDENTIFIER-4))|(1<<(MonkeyParserINTEGER-4))|(1<<(MonkeyParserSTRING-4)))) != 0 {
 		{
-<<<<<<< HEAD
-			p.SetState(201)
-			p.Statement()
-		}
-
-		p.SetState(206)
-=======
 			p.SetState(197)
 			p.Statement()
 		}
 
 		p.SetState(202)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-<<<<<<< HEAD
-		p.SetState(207)
-=======
 		p.SetState(203)
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
 		p.Match(MonkeyParserR_CURLY)
 	}
 
 	return localctx
 }
-<<<<<<< HEAD
-
-// IIdentifierContext is an interface to support dynamic dispatch.
-type IIdentifierContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// GetDeclaration returns the declaration attribute.
-	GetDeclaration() *LetStatementTreeContext
-
-	// SetDeclaration sets the declaration attribute.
-	SetDeclaration(*LetStatementTreeContext)
-
-	// IsIdentifierContext differentiates from other interfaces.
-	IsIdentifierContext()
-}
-
-type IdentifierContext struct {
-	*antlr.BaseParserRuleContext
-	parser      antlr.Parser
-	declaration *LetStatementTreeContext
-}
-
-func NewEmptyIdentifierContext() *IdentifierContext {
-	var p = new(IdentifierContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = MonkeyParserRULE_identifier
-	return p
-}
-
-func (*IdentifierContext) IsIdentifierContext() {}
-
-func NewIdentifierContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *IdentifierContext {
-	var p = new(IdentifierContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = MonkeyParserRULE_identifier
-
-	return p
-}
-
-func (s *IdentifierContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *IdentifierContext) GetDeclaration() *LetStatementTreeContext { return s.declaration }
-
-func (s *IdentifierContext) SetDeclaration(v *LetStatementTreeContext) { s.declaration = v }
-
-func (s *IdentifierContext) CopyFrom(ctx *IdentifierContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
-	s.declaration = ctx.declaration
-}
-
-func (s *IdentifierContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *IdentifierContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-type IdentifierNodeContext struct {
-	*IdentifierContext
-}
-
-func NewIdentifierNodeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *IdentifierNodeContext {
-	var p = new(IdentifierNodeContext)
-
-	p.IdentifierContext = NewEmptyIdentifierContext()
-	p.parser = parser
-	p.CopyFrom(ctx.(*IdentifierContext))
-
-	return p
-}
-
-func (s *IdentifierNodeContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *IdentifierNodeContext) IDENTIFIER() antlr.TerminalNode {
-	return s.GetToken(MonkeyParserIDENTIFIER, 0)
-}
-
-func (s *IdentifierNodeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case MonkeyParserVisitor:
-		return t.VisitIdentifierNode(s)
-
-	default:
-		return t.VisitChildren(s)
-	}
-}
-
-func (p *MonkeyParser) Identifier() (localctx IIdentifierContext) {
-	localctx = NewIdentifierContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 34, MonkeyParserRULE_identifier)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	localctx = NewIdentifierNodeContext(p, localctx)
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(209)
-		p.Match(MonkeyParserIDENTIFIER)
-	}
-
-	return localctx
-}
-
-// IFunctionContext is an interface to support dynamic dispatch.
-type IFunctionContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// GetDeclaration returns the declaration attribute.
-	GetDeclaration() *FunctionATreeContext
-
-	// SetDeclaration sets the declaration attribute.
-	SetDeclaration(*FunctionATreeContext)
-
-	// IsFunctionContext differentiates from other interfaces.
-	IsFunctionContext()
-}
-
-type FunctionContext struct {
-	*antlr.BaseParserRuleContext
-	parser      antlr.Parser
-	declaration *FunctionATreeContext
-}
-
-func NewEmptyFunctionContext() *FunctionContext {
-	var p = new(FunctionContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = MonkeyParserRULE_function
-	return p
-}
-
-func (*FunctionContext) IsFunctionContext() {}
-
-func NewFunctionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionContext {
-	var p = new(FunctionContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = MonkeyParserRULE_function
-
-	return p
-}
-
-func (s *FunctionContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *FunctionContext) GetDeclaration() *FunctionATreeContext { return s.declaration }
-
-func (s *FunctionContext) SetDeclaration(v *FunctionATreeContext) { s.declaration = v }
-
-func (s *FunctionContext) CopyFrom(ctx *FunctionContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
-	s.declaration = ctx.declaration
-}
-
-func (s *FunctionContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *FunctionContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-type FunctionNodeContext struct {
-	*FunctionContext
-}
-
-func NewFunctionNodeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *FunctionNodeContext {
-	var p = new(FunctionNodeContext)
-
-	p.FunctionContext = NewEmptyFunctionContext()
-	p.parser = parser
-	p.CopyFrom(ctx.(*FunctionContext))
-
-	return p
-}
-
-func (s *FunctionNodeContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *FunctionNodeContext) FUNC() antlr.TerminalNode {
-	return s.GetToken(MonkeyParserFUNC, 0)
-}
-
-func (s *FunctionNodeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case MonkeyParserVisitor:
-		return t.VisitFunctionNode(s)
-
-	default:
-		return t.VisitChildren(s)
-	}
-}
-
-func (p *MonkeyParser) Function() (localctx IFunctionContext) {
-	localctx = NewFunctionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 36, MonkeyParserRULE_function)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	localctx = NewFunctionNodeContext(p, localctx)
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(211)
-		p.Match(MonkeyParserFUNC)
-	}
-
-	return localctx
-}
-=======
->>>>>>> 2af3cb8026895fa1a1c236274fa50c92e0cab6e4
