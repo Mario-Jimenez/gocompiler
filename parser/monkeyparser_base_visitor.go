@@ -16,105 +16,7 @@ func (v *BaseMonkeyParserVisitor) VisitLetStatementTree(ctx *LetStatementTreeCon
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseMonkeyParserVisitor) VisitReturnStatementTree(ctx *ReturnStatementTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitExpressionStatementTree(ctx *ExpressionStatementTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitExpressionTree(ctx *ExpressionTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitLessComparison(ctx *LessComparisonContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitGreaterComparison(ctx *GreaterComparisonContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitLessOrEqualsComparison(ctx *LessOrEqualsComparisonContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitGreaterOrEqualsComparison(ctx *GreaterOrEqualsComparisonContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitEqualsComparison(ctx *EqualsComparisonContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitAdditionTree(ctx *AdditionTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitPlusOperator(ctx *PlusOperatorContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitMinusOperator(ctx *MinusOperatorContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitMultiplicationTree(ctx *MultiplicationTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitMultiplicationOperator(ctx *MultiplicationOperatorContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitDivisionOperator(ctx *DivisionOperatorContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitElementTree(ctx *ElementTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitElementAccessTree(ctx *ElementAccessTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitFunctionCallTree(ctx *FunctionCallTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitInteger(ctx *IntegerContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitString(ctx *StringContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitIdentifierTree(ctx *IdentifierTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitTrue(ctx *TrueContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitFalse(ctx *FalseContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitGroupedExpressionTree(ctx *GroupedExpressionTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitArrayTree(ctx *ArrayTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitArrayFunctionTree(ctx *ArrayFunctionTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
+}ue(etex)nrourvrinonyVi
 
 func (v *BaseMonkeyParserVisitor) VisitFunctionATree(ctx *FunctionATreeContext) interface{} {
 	return v.VisitChildren(ctx)
@@ -165,13 +67,5 @@ func (v *BaseMonkeyParserVisitor) VisitExpressionListTree(ctx *ExpressionListTre
 }
 
 func (v *BaseMonkeyParserVisitor) VisitBlockTree(ctx *BlockTreeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitIdentifierNode(ctx *IdentifierNodeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseMonkeyParserVisitor) VisitFunctionNode(ctx *FunctionNodeContext) interface{} {
 	return v.VisitChildren(ctx)
 }

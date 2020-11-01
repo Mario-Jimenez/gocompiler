@@ -71,8 +71,8 @@ type MonkeyParserVisitor interface {
 	// Visit a parse tree produced by MonkeyParser#string.
 	VisitString(ctx *StringContext) interface{}
 
-	// Visit a parse tree produced by MonkeyParser#identifierTree.
-	VisitIdentifierTree(ctx *IdentifierTreeContext) interface{}
+	// Visit a parse tree produced by MonkeyParser#identifier.
+	VisitIdentifier(ctx *IdentifierContext) interface{}
 
 	// Visit a parse tree produced by MonkeyParser#true.
 	VisitTrue(ctx *TrueContext) interface{}
@@ -127,10 +127,4 @@ type MonkeyParserVisitor interface {
 
 	// Visit a parse tree produced by MonkeyParser#blockTree.
 	VisitBlockTree(ctx *BlockTreeContext) interface{}
-
-	// Visit a parse tree produced by MonkeyParser#identifierNode.
-	VisitIdentifierNode(ctx *IdentifierNodeContext) interface{}
-
-	// Visit a parse tree produced by MonkeyParser#functionNode.
-	VisitFunctionNode(ctx *FunctionNodeContext) interface{}
 }
