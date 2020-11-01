@@ -22,14 +22,11 @@ func NewGeneralTable(handler *errorsHandler) *GeneralTable {
 
 // TODO: parameters shouldn't be repeated
 func (t *GeneralTable) Enter(id string, attr *generalAttribute, parameter bool) {
-	if _, ok := t.table[t.level][id]; ok {
-		return
-	}
-
 	if parameter {
 		attr.setVisited()
 	}
 
+	// overwrite if it already exists, token data changes
 	t.table[t.level][id] = attr
 }
 
@@ -45,8 +42,7 @@ func (t *GeneralTable) Validate(token antlr.Token) {
 	}
 
 	newError := fmt.Sprintf("line %d:%d declaration for '%s' not found", token.GetLine(), token.GetColumn(), token.GetText())
-	t.errors.addError(newError)
-	t.errors.addLine(token.GetLine())
+	t.errors.Add(newError, token.GetLine())
 }
 
 func (t *GeneralTable) OpenScope() {
@@ -59,10 +55,13 @@ func (t *GeneralTable) CloseScope() {
 		if !declaration.wasVisited() {
 			token := declaration.getToken()
 			newError := fmt.Sprintf("line %d:%d identifier '%s' was declared but not used", token.GetLine(), token.GetColumn(), token.GetText())
-			t.errors.addError(newError)
-			t.errors.addLine(token.GetLine())
+			t.errors.Add(newError, token.GetLine())
 		}
 	}
 	delete(t.table, t.level)
 	t.level--
+}
+
+func (t *GeneralTable) AddError(newError string, newLine int) {
+	t.errors.Add(newError, newLine)
 }

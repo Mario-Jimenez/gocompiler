@@ -22,11 +22,12 @@ func (v *visitor) VisitElementTree(ctx *parser.ElementTreeContext) interface{} {
 	if v.identifier.isIdentifier() {
 		if v.identifier.isCall() {
 			v.functionTable.Validate(v.identifier.getToken(), v.identifier.getParameters())
-			v.identifier.reset()
+			v.identifier.closeIdentifier()
+
 			return nil
 		}
 		v.generalTable.Validate(v.identifier.getToken())
-		v.identifier.reset()
+		v.identifier.closeIdentifier()
 	}
 
 	return nil

@@ -2,52 +2,63 @@ package contextual
 
 import "github.com/antlr/antlr4/runtime/Go/antlr"
 
-type identifierHelper struct {
+type identifier struct {
 	identifier bool
 	token      antlr.Token
 	call       bool
 	parameters int
 }
 
+type identifierHelper struct {
+	levels      int
+	identifiers []identifier
+}
+
 func newIdentifierHelper() *identifierHelper {
-	return &identifierHelper{}
+	return &identifierHelper{
+		levels:      -1,
+		identifiers: []identifier{},
+	}
+}
+
+func (h *identifierHelper) newIdentifier() {
+	h.levels++
+	h.identifiers = append(h.identifiers, identifier{})
 }
 
 func (h *identifierHelper) markIdentifier() {
-	h.identifier = true
+	h.identifiers[h.levels].identifier = true
 }
 
 func (h *identifierHelper) isIdentifier() bool {
-	return h.identifier
+	return h.identifiers[h.levels].identifier
 }
 
 func (h *identifierHelper) setToken(token antlr.Token) {
-	h.token = token
+	h.identifiers[h.levels].token = token
 }
 
 func (h *identifierHelper) getToken() antlr.Token {
-	return h.token
+	return h.identifiers[h.levels].token
 }
 
 func (h *identifierHelper) markCall() {
-	h.call = true
+	h.identifiers[h.levels].call = true
 }
 
 func (h *identifierHelper) isCall() bool {
-	return h.call
+	return h.identifiers[h.levels].call
 }
 
 func (h *identifierHelper) setParameters(parameters int) {
-	h.parameters = parameters
+	h.identifiers[h.levels].parameters = parameters
 }
 
 func (h *identifierHelper) getParameters() int {
-	return h.parameters
+	return h.identifiers[h.levels].parameters
 }
 
-func (h *identifierHelper) reset() {
-	h.identifier = false
-	h.token = nil
-	h.call = false
-	h.parameters = 0
+func (h *identifierHelper) closeIdentifier() {
+	h.identifiers = h.identifiers[:h.levels]
+	h.levels--
 }

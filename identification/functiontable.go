@@ -21,39 +21,32 @@ func NewFunctionTable(handler *errorsHandler) *FunctionTable {
 }
 
 func (t *FunctionTable) Enter(id string, attr *functionAttribute) {
-	if _, ok := t.table[t.level][id]; ok {
-		return
-	}
-
+	// overwrite if it already exists, token data changes
+	// and total parameters could change
 	t.table[t.level][id] = attr
 }
 
 func (t *FunctionTable) Validate(token antlr.Token, parameters int) {
-	var found bool
 	id := token.GetText()
 	tempLevel := t.level
 	for tempLevel > 0 {
 		if attr, ok := t.table[tempLevel][id]; ok {
-			found = true
 			if attr.getParameters() == parameters {
+				return
+			} else {
+				newError := fmt.Sprintf("line %d:%d mismatched number of parameters passed to function '%s'", token.GetLine(), token.GetColumn(), token.GetText())
+				t.errors.Add(newError, token.GetLine())
 				return
 			}
 		}
 		tempLevel--
 	}
 
-	if found {
-		newError := fmt.Sprintf("line %d:%d mismatched number of parameters passed to function '%s'", token.GetLine(), token.GetColumn(), token.GetText())
-		t.errors.addError(newError)
-		t.errors.addLine(token.GetLine())
-		return
-	}
-
 	newError := fmt.Sprintf("line %d:%d function declaration for '%s' not found", token.GetLine(), token.GetColumn(), token.GetText())
-	t.errors.addError(newError)
-	t.errors.addLine(token.GetLine())
+	t.errors.Add(newError, token.GetLine())
 }
 
+// TODO: handle visited? better memory management?
 func (t *FunctionTable) OpenScope() {
 	t.level++
 	t.table[t.level] = map[string]*functionAttribute{}

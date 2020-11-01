@@ -30,6 +30,7 @@ func (v *visitor) VisitString(ctx *parser.StringContext) interface{} {
 }
 
 func (v *visitor) VisitIdentifier(ctx *parser.IdentifierContext) interface{} {
+	v.identifier.newIdentifier()
 	v.identifier.markIdentifier()
 	v.identifier.setToken(ctx.IDENTIFIER().GetSymbol())
 

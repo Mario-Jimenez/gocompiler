@@ -12,11 +12,8 @@ func NewErrorsHandler() *errorsHandler {
 	}
 }
 
-func (e *errorsHandler) addError(newError string) {
+func (e *errorsHandler) Add(newError string, newLine int) {
 	e.errors = append(e.errors, newError)
-}
-
-func (e *errorsHandler) addLine(newLine int) {
 	e.lines = append(e.lines, newLine)
 }
 
