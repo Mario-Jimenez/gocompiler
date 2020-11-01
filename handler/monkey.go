@@ -3,11 +3,11 @@ package handler
 import (
 	"net/http"
 
-	"github.com/Mario-Jimenez/gocompiler/contextual"
 	"github.com/Mario-Jimenez/gocompiler/errors"
 	"github.com/Mario-Jimenez/gocompiler/identification"
 	"github.com/Mario-Jimenez/gocompiler/parser"
-	"github.com/Mario-Jimenez/gocompiler/visitor"
+	"github.com/Mario-Jimenez/gocompiler/visitor/contextual"
+	"github.com/Mario-Jimenez/gocompiler/visitor/graph"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"github.com/gin-gonic/gin"
 )
@@ -63,22 +63,24 @@ func parsing(program string) ([]string, []int, interface{}) {
 	// initial rule to start parsing process
 	tree := parser.Program()
 
-	// parser tree visitor
-	visitor := visitor.NewMonkeyVisitor()
-	parseTree := visitor.Visit(tree)
+	// tree graph visitor
+	graphVisitor := graph.NewVisitor()
+	treeGraph := graphVisitor.Visit(tree)
 
 	if parserErrors.Errors() == nil {
 		// contextual analysis visitor
-		table := identification.NewTable()
-		ctxVisitor := contextual.NewContextualVisitor(table)
-		ctxVisitor.Visit(tree)
+		contextualErrors := identification.NewErrorsHandler()
+		generalTable := identification.NewGeneralTable(contextualErrors)
+		functionTable := identification.NewFunctionTable(contextualErrors)
+		contextualVisitor := contextual.NewVisitor(generalTable, functionTable)
+		contextualVisitor.Visit(tree)
 
-		if table.Errors() == nil {
-			return []string{}, []int{}, parseTree
+		if contextualErrors.Errors() == nil {
+			return []string{}, []int{}, treeGraph
 		}
 
-		return table.Errors(), table.Lines(), parseTree
+		return contextualErrors.Errors(), contextualErrors.Lines(), treeGraph
 	}
 
-	return parserErrors.Errors(), parserErrors.Lines(), parseTree
+	return parserErrors.Errors(), parserErrors.Lines(), treeGraph
 }
