@@ -1,6 +1,8 @@
 package contextual
 
 import (
+	"fmt"
+
 	"github.com/Mario-Jimenez/gocompiler/identification"
 	"github.com/Mario-Jimenez/gocompiler/parser"
 )
@@ -37,8 +39,12 @@ func (v *visitor) VisitLetStatementTree(ctx *parser.LetStatementTreeContext) int
 }
 
 func (v *visitor) VisitReturnStatementTree(ctx *parser.ReturnStatementTreeContext) interface{} {
+
 	if !v.declaration.isFunction() {
 		// TODO: error: return outside function definition
+		token := ctx.RETURN().GetSymbol()
+		newError := fmt.Sprintf("line %d:%d return outside function definition", token.GetLine(), token.GetColumn())
+		v.generalTable.AddError(newError, token.GetLine())
 	}
 
 	v.Visit(ctx.Expression())
