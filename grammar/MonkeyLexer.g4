@@ -45,10 +45,8 @@ PUSH	: 'push';
 IDENTIFIER	: LETTER (LETTER | DIGIT)*;
 INTEGER		: DIGIT DIGIT*;
 STRING		: '"' ~ ["\r\n]* '"';
-
 fragment LETTER	: [a-zA-Z_];
 fragment DIGIT	: [0-9];
-
 // Hidden tokens
 WS				: [ \t]+					-> channel(HIDDEN);
 COMMENT			: '/*' (COMMENT | .)*? '*/'	-> channel(HIDDEN);

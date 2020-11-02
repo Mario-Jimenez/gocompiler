@@ -89,8 +89,8 @@ type MonkeyParserVisitor interface {
 	// Visit a parse tree produced by MonkeyParser#arrayFunctionTree.
 	VisitArrayFunctionTree(ctx *ArrayFunctionTreeContext) interface{}
 
-	// Visit a parse tree produced by MonkeyParser#functionATree.
-	VisitFunctionATree(ctx *FunctionATreeContext) interface{}
+	// Visit a parse tree produced by MonkeyParser#functionTree.
+	VisitFunctionTree(ctx *FunctionTreeContext) interface{}
 
 	// Visit a parse tree produced by MonkeyParser#hashObjectTree.
 	VisitHashObjectTree(ctx *HashObjectTreeContext) interface{}
