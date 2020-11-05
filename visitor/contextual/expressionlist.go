@@ -11,12 +11,13 @@ import (
 */
 
 func (v *visitor) VisitExpressionListTree(ctx *parser.ExpressionListTreeContext) interface{} {
+	if v.identifier.getType() == ICALL {
+		v.identifier.setParameters(len(ctx.AllExpression()))
+	}
+
 	v.Visit(ctx.Expression(0))
 
 	totalBranches := len(ctx.AllExpression())
-	if v.identifier.isCall() {
-		v.identifier.setParameters(totalBranches)
-	}
 	index := 1
 	for index < totalBranches {
 		if ctx.Expression(index) != nil {

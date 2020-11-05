@@ -9,15 +9,13 @@ import (
 */
 
 func (v *visitor) VisitBlockTree(ctx *parser.BlockTreeContext) interface{} {
-	v.generalTable.OpenScope()
-	v.functionTable.OpenScope()
+	v.table.OpenScope()
 
 	for _, branch := range ctx.AllStatement() {
 		v.Visit(branch)
 	}
 
-	v.generalTable.CloseScope()
-	v.functionTable.CloseScope()
+	v.table.CloseScope()
 
 	return nil
 }

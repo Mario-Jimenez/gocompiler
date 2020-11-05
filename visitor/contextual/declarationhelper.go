@@ -1,8 +1,22 @@
 package contextual
 
+import (
+	"github.com/antlr/antlr4/runtime/Go/antlr"
+)
+
+type DeclarationType int
+
+const (
+	DNEUTRAL DeclarationType = iota
+	DFUNCTION
+	DHASH
+	DARRAY
+)
+
 type declaration struct {
-	function   bool
-	parameters int
+	token       antlr.Token
+	declaration DeclarationType
+	parameters  int
 }
 
 type declarationHelper struct {
@@ -22,12 +36,30 @@ func (h *declarationHelper) newDeclaration() {
 	h.declarations = append(h.declarations, declaration{})
 }
 
-func (h *declarationHelper) markFunction() {
-	h.declarations[h.levels].function = true
+func (h *declarationHelper) setToken(token antlr.Token) {
+	h.declarations[h.levels].token = token
 }
 
-func (h *declarationHelper) isFunction() bool {
-	return h.declarations[h.levels].function
+func (h *declarationHelper) getToken() antlr.Token {
+	if h.levels > -1 {
+		return h.declarations[h.levels].token
+	}
+
+	return nil
+}
+
+func (h *declarationHelper) setType(declaration DeclarationType) {
+	if h.levels > -1 {
+		h.declarations[h.levels].declaration = declaration
+	}
+}
+
+func (h *declarationHelper) getType() DeclarationType {
+	if h.levels > -1 {
+		return h.declarations[h.levels].declaration
+	}
+
+	return DNEUTRAL
 }
 
 func (h *declarationHelper) setParameters(parameters int) {

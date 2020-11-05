@@ -1,6 +1,8 @@
 package contextual
 
 import (
+	"fmt"
+
 	"github.com/Mario-Jimenez/gocompiler/identification"
 	"github.com/Mario-Jimenez/gocompiler/parser"
 )
@@ -16,20 +18,15 @@ import (
 func (v *visitor) VisitLetStatementTree(ctx *parser.LetStatementTreeContext) interface{} {
 	v.declaration.newDeclaration()
 
+	token := ctx.IDENTIFIER().GetSymbol()
+	v.declaration.setToken(token)
+
 	v.Visit(ctx.Expression())
 
-	token := ctx.IDENTIFIER().GetSymbol()
-
-	if v.declaration.isFunction() {
-		attr := identification.NewFunctionAttribute(token, v.declaration.getParameters())
-		v.functionTable.Enter(ctx.IDENTIFIER().GetText(), attr)
-		v.declaration.closeDeclaration()
-
-		return nil
+	if v.declaration.getType() == DNEUTRAL {
+		attr := identification.NewAttribute(identification.IDENTIFIER, token, nil)
+		v.table.Enter(ctx.IDENTIFIER().GetText(), attr)
 	}
-
-	attr := identification.NewGeneralAttribute(token)
-	v.generalTable.Enter(ctx.IDENTIFIER().GetText(), attr, false)
 
 	v.declaration.closeDeclaration()
 
@@ -37,8 +34,11 @@ func (v *visitor) VisitLetStatementTree(ctx *parser.LetStatementTreeContext) int
 }
 
 func (v *visitor) VisitReturnStatementTree(ctx *parser.ReturnStatementTreeContext) interface{} {
-	if !v.declaration.isFunction() {
-		// TODO: error: return outside function definition
+	if v.declaration.getType() != DFUNCTION {
+		// error: return outside function declaration
+		token := ctx.RETURN().GetSymbol()
+		newError := fmt.Sprintf("line %d:%d return outside function declaration", token.GetLine(), token.GetColumn())
+		v.table.AddError(newError, token.GetLine())
 	}
 
 	v.Visit(ctx.Expression())

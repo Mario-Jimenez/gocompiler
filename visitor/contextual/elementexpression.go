@@ -11,6 +11,8 @@ import (
 */
 
 func (v *visitor) VisitElementTree(ctx *parser.ElementTreeContext) interface{} {
+	v.identifier.newIdentifier()
+
 	v.Visit(ctx.PrimitiveExpression())
 
 	if ctx.ElementAccess() != nil {
@@ -19,16 +21,11 @@ func (v *visitor) VisitElementTree(ctx *parser.ElementTreeContext) interface{} {
 		v.Visit(ctx.CallExpression())
 	}
 
-	if v.identifier.isIdentifier() {
-		if v.identifier.isCall() {
-			v.functionTable.Validate(v.identifier.getToken(), v.identifier.getParameters())
-			v.identifier.closeIdentifier()
-
-			return nil
-		}
-		v.generalTable.Validate(v.identifier.getToken())
-		v.identifier.closeIdentifier()
+	if v.identifier.getType() == IIDENTIFIER {
+		v.table.Retrieve(v.identifier.getToken())
 	}
+
+	v.identifier.closeIdentifier()
 
 	return nil
 }
