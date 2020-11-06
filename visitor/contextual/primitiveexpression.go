@@ -22,16 +22,25 @@ import (
 */
 
 func (v *visitor) VisitInteger(ctx *parser.IntegerContext) interface{} {
+	if v.hash.getType() == HUNKNOWN {
+		v.hash.setToken(ctx.INTEGER().GetSymbol())
+		v.hash.setType(HINTEGER)
+	}
+
 	return nil
 }
 
 func (v *visitor) VisitString(ctx *parser.StringContext) interface{} {
+	if v.hash.getType() == HUNKNOWN {
+		v.hash.setToken(ctx.STRING().GetSymbol())
+		v.hash.setType(HSTRING)
+	}
+
 	return nil
 }
 
 func (v *visitor) VisitIdentifier(ctx *parser.IdentifierContext) interface{} {
-	v.identifier.newIdentifier()
-	v.identifier.markIdentifier()
+	v.identifier.setType(IIDENTIFIER)
 	v.identifier.setToken(ctx.IDENTIFIER().GetSymbol())
 
 	return nil
@@ -70,19 +79,13 @@ func (v *visitor) VisitArrayFunctionTree(ctx *parser.ArrayFunctionTreeContext) i
 }
 
 func (v *visitor) VisitFunctionTree(ctx *parser.FunctionTreeContext) interface{} {
-	v.generalTable.OpenScope()
+	v.declaration.setType(DFUNCTION)
 
-	v.declaration.markFunction()
+	v.Visit(ctx.FunctionParameters())
 
-	if ctx.FunctionParameters() != nil {
-		v.Visit(ctx.FunctionParameters())
-	}
+	v.Visit(ctx.BlockStatement())
 
-	if ctx.BlockStatement() != nil {
-		v.Visit(ctx.BlockStatement())
-	}
-
-	v.generalTable.CloseScope()
+	v.table.CloseScope()
 
 	return nil
 }
@@ -102,9 +105,7 @@ func (v *visitor) VisitHashObjectTree(ctx *parser.HashObjectTreeContext) interfa
 }
 
 func (v *visitor) VisitPrintTree(ctx *parser.PrintTreeContext) interface{} {
-	if ctx.Expression() != nil {
-		v.Visit(ctx.Expression())
-	}
+	v.Visit(ctx.Expression())
 
 	return nil
 }

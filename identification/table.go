@@ -6,51 +6,48 @@ import (
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
-// GeneralTable for declarations
-type GeneralTable struct {
-	table  map[int]map[string]*generalAttribute
+// Table for identification
+type Table struct {
+	table  map[int]map[string]*attribute
 	level  int
 	errors *errorsHandler
 }
 
-func NewGeneralTable(handler *errorsHandler) *GeneralTable {
-	return &GeneralTable{
-		table:  map[int]map[string]*generalAttribute{},
+func NewTable(handler *errorsHandler) *Table {
+	return &Table{
+		table:  map[int]map[string]*attribute{},
 		errors: handler,
 	}
 }
 
-// TODO: parameters shouldn't be repeated
-func (t *GeneralTable) Enter(id string, attr *generalAttribute, parameter bool) {
-	if parameter {
-		attr.setVisited()
-	}
-
+func (t *Table) Enter(id string, attr *attribute) {
 	// overwrite if it already exists, token data changes
 	t.table[t.level][id] = attr
 }
 
-func (t *GeneralTable) Validate(token antlr.Token) {
+func (t *Table) Retrieve(token antlr.Token) *attribute {
 	id := token.GetText()
 	tempLevel := t.level
 	for tempLevel > 0 {
 		if attr, ok := t.table[tempLevel][id]; ok {
-			attr.setVisited()
-			return
+			attr.markVisited()
+			return attr
 		}
 		tempLevel--
 	}
 
 	newError := fmt.Sprintf("line %d:%d declaration for '%s' not found", token.GetLine(), token.GetColumn(), token.GetText())
 	t.errors.Add(newError, token.GetLine())
+
+	return nil
 }
 
-func (t *GeneralTable) OpenScope() {
+func (t *Table) OpenScope() {
 	t.level++
-	t.table[t.level] = map[string]*generalAttribute{}
+	t.table[t.level] = map[string]*attribute{}
 }
 
-func (t *GeneralTable) CloseScope() {
+func (t *Table) CloseScope() {
 	for _, declaration := range t.table[t.level] {
 		if !declaration.wasVisited() {
 			token := declaration.getToken()
@@ -62,6 +59,6 @@ func (t *GeneralTable) CloseScope() {
 	t.level--
 }
 
-func (t *GeneralTable) AddError(newError string, newLine int) {
+func (t *Table) AddError(newError string, newLine int) {
 	t.errors.Add(newError, newLine)
 }

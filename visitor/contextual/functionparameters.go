@@ -14,15 +14,24 @@ import (
 */
 
 func (v *visitor) VisitFunctionParametersTree(ctx *parser.FunctionParametersTreeContext) interface{} {
+	token := v.declaration.getToken()
+	if token != nil {
+		functionData := identification.NewFunctionData(len(ctx.AllIDENTIFIER()))
+		attr := identification.NewAttribute(identification.FUNCTION, token, functionData)
+		v.table.Enter(token.GetText(), attr)
+		v.declaration.setToken(nil)
+	}
+
+	v.table.OpenScope()
+
 	parameters := map[string]interface{}{}
 	parameters[ctx.IDENTIFIER(0).GetText()] = nil
 
-	token := ctx.IDENTIFIER(0).GetSymbol()
-	attr := identification.NewGeneralAttribute(token)
-	v.generalTable.Enter(ctx.IDENTIFIER(0).GetText(), attr, true)
+	token = ctx.IDENTIFIER(0).GetSymbol()
+	attr := identification.NewAttribute(identification.IDENTIFIER, token, nil)
+	v.table.Enter(ctx.IDENTIFIER(0).GetText(), attr)
 
 	totalBranches := len(ctx.AllIDENTIFIER())
-	v.declaration.setParameters(totalBranches)
 
 	index := 1
 	for index < totalBranches {
@@ -31,7 +40,7 @@ func (v *visitor) VisitFunctionParametersTree(ctx *parser.FunctionParametersTree
 		if _, ok := parameters[ctx.IDENTIFIER(index).GetText()]; ok {
 			// error: parameter already exists
 			newError := fmt.Sprintf("line %d:%d parameter '%s' was already declared in function", token.GetLine(), token.GetColumn(), token.GetText())
-			v.generalTable.AddError(newError, token.GetLine())
+			v.table.AddError(newError, token.GetLine())
 
 			index++
 			continue
@@ -39,8 +48,8 @@ func (v *visitor) VisitFunctionParametersTree(ctx *parser.FunctionParametersTree
 
 		parameters[ctx.IDENTIFIER(0).GetText()] = nil
 
-		attr := identification.NewGeneralAttribute(token)
-		v.generalTable.Enter(ctx.IDENTIFIER(index).GetText(), attr, true)
+		attr := identification.NewAttribute(identification.IDENTIFIER, token, nil)
+		v.table.Enter(ctx.IDENTIFIER(index).GetText(), attr)
 
 		index++
 	}

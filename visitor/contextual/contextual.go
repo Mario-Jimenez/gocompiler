@@ -6,20 +6,19 @@ import "github.com/Mario-Jimenez/gocompiler/identification"
 // contextual analysis
 // methods are located in smaller files with rules names
 type visitor struct {
-	generalTable  *identification.GeneralTable
-	functionTable *identification.FunctionTable
+	table *identification.Table
 
 	declaration *declarationHelper
 	identifier  *identifierHelper
+	hash        *hashHelper
 }
 
 // NewVisitor instance
-func NewVisitor(generalTable *identification.GeneralTable,
-	functionTable *identification.FunctionTable) *visitor {
+func NewVisitor(table *identification.Table) *visitor {
 	return &visitor{
-		generalTable:  generalTable,
-		functionTable: functionTable,
-		declaration:   newDeclarationHelper(),
-		identifier:    newIdentifierHelper(),
+		table:       table,
+		declaration: newDeclarationHelper(),
+		identifier:  newIdentifierHelper(),
+		hash:        newHashHelper(),
 	}
 }

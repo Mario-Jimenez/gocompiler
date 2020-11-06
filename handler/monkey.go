@@ -70,9 +70,8 @@ func parsing(program string) ([]string, []int, interface{}) {
 	if parserErrors.Errors() == nil {
 		// contextual analysis visitor
 		contextualErrors := identification.NewErrorsHandler()
-		generalTable := identification.NewGeneralTable(contextualErrors)
-		functionTable := identification.NewFunctionTable(contextualErrors)
-		contextualVisitor := contextual.NewVisitor(generalTable, functionTable)
+		table := identification.NewTable(contextualErrors)
+		contextualVisitor := contextual.NewVisitor(table)
 		contextualVisitor.Visit(tree)
 
 		if contextualErrors.Errors() == nil {
