@@ -1,6 +1,9 @@
 package contextual
 
 import (
+	"fmt"
+
+	"github.com/Mario-Jimenez/gocompiler/identification"
 	"github.com/Mario-Jimenez/gocompiler/parser"
 )
 
@@ -22,7 +25,12 @@ func (v *visitor) VisitElementTree(ctx *parser.ElementTreeContext) interface{} {
 	}
 
 	if v.identifier.getType() == IIDENTIFIER {
-		v.table.Retrieve(v.identifier.getToken())
+		attr := v.table.Retrieve(v.identifier.getToken())
+		if attr != nil && attr.GetType() != identification.IDENTIFIER {
+			token := v.identifier.getToken()
+			newError := fmt.Sprintf("line %d:%d invalid usage for identifier '%s'", token.GetLine(), token.GetColumn(), token.GetText())
+			v.table.AddError(newError, token.GetLine())
+		}
 	}
 
 	v.identifier.closeIdentifier()

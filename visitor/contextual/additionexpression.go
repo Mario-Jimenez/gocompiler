@@ -18,6 +18,8 @@ func (v *visitor) VisitAdditionTree(ctx *parser.AdditionTreeContext) interface{}
 	totalBranches := len(ctx.AllMultiplicationExpression())
 	index := 1
 	for index < totalBranches {
+		v.hash.setType(HCOMPLEX)
+
 		v.Visit(ctx.AdditionFactor(index - 1))
 
 		v.Visit(ctx.MultiplicationExpression(index))
