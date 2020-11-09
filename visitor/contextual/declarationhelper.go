@@ -17,6 +17,8 @@ type declaration struct {
 	token       antlr.Token
 	declaration DeclarationType
 	parameters  int
+	hashKeys    []hashKey
+	nestedHash  int
 }
 
 type declarationHelper struct {
@@ -68,6 +70,48 @@ func (h *declarationHelper) setParameters(parameters int) {
 
 func (h *declarationHelper) getParameters() int {
 	return h.declarations[h.levels].parameters
+}
+
+func (h *declarationHelper) incNestedHash() {
+	if h.levels > -1 {
+		h.declarations[h.levels].nestedHash++
+	}
+}
+
+func (h *declarationHelper) decNestedHash() {
+	if h.levels > -1 {
+		h.declarations[h.levels].nestedHash--
+	}
+}
+
+func (h *declarationHelper) isNestedHash() bool {
+	if h.levels > -1 {
+		if h.declarations[h.levels].nestedHash == 0 {
+			return false
+		}
+	}
+
+	return true
+}
+
+func (h *declarationHelper) addHashKey(token antlr.Token, key HashType) bool {
+	for _, k := range h.declarations[h.levels].hashKeys {
+		if k.token.GetText() == token.GetText() {
+			// error: key already exists
+			return false
+		}
+	}
+
+	h.declarations[h.levels].hashKeys = append(h.declarations[h.levels].hashKeys, hashKey{
+		token: token,
+		key:   key,
+	})
+
+	return true
+}
+
+func (h *declarationHelper) getHashKeys() []hashKey {
+	return h.declarations[h.levels].hashKeys
 }
 
 func (h *declarationHelper) closeDeclaration() {

@@ -16,6 +16,8 @@ func (v *visitor) VisitExpressionTree(ctx *parser.ExpressionTreeContext) interfa
 	totalBranches := len(ctx.AllAdditionExpression())
 	index := 1
 	for index < totalBranches {
+		v.hash.setType(HCOMPLEX)
+
 		v.Visit(ctx.Comparison(index - 1))
 
 		v.Visit(ctx.AdditionExpression(index))
