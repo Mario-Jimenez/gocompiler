@@ -14,6 +14,8 @@ import (
 */
 
 func (v *visitor) VisitFunctionCallTree(ctx *parser.FunctionCallTreeContext) interface{} {
+	v.hash.setType(HCOMPLEX)
+
 	if v.identifier.getType() != IIDENTIFIER {
 		token := ctx.L_PAREN().GetSymbol()
 		newError := fmt.Sprintf("line %d:%d invalid function call", token.GetLine(), token.GetColumn())

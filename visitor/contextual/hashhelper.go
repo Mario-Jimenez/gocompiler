@@ -11,26 +11,26 @@ const (
 	HCOMPLEX
 )
 
-type hash struct {
+type hashKey struct {
 	token antlr.Token
 	key   HashType
 }
 
 type hashHelper struct {
 	levels int
-	hashs  []hash
+	hashs  []hashKey
 }
 
 func newHashHelper() *hashHelper {
 	return &hashHelper{
 		levels: -1,
-		hashs:  []hash{},
+		hashs:  []hashKey{},
 	}
 }
 
 func (h *hashHelper) newHash() {
 	h.levels++
-	h.hashs = append(h.hashs, hash{})
+	h.hashs = append(h.hashs, hashKey{})
 }
 
 func (h *hashHelper) setToken(token antlr.Token) {
@@ -44,7 +44,9 @@ func (h *hashHelper) getToken() antlr.Token {
 }
 
 func (h *hashHelper) setType(key HashType) {
-	h.hashs[h.levels].key = key
+	if h.levels > -1 {
+		h.hashs[h.levels].key = key
+	}
 }
 
 func (h *hashHelper) getType() HashType {

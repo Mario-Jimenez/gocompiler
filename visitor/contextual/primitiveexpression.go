@@ -1,6 +1,7 @@
 package contextual
 
 import (
+	"github.com/Mario-Jimenez/gocompiler/identification"
 	"github.com/Mario-Jimenez/gocompiler/parser"
 )
 
@@ -43,24 +44,34 @@ func (v *visitor) VisitIdentifier(ctx *parser.IdentifierContext) interface{} {
 	v.identifier.setType(IIDENTIFIER)
 	v.identifier.setToken(ctx.IDENTIFIER().GetSymbol())
 
+	v.hash.setType(HCOMPLEX)
+
 	return nil
 }
 
 func (v *visitor) VisitTrue(ctx *parser.TrueContext) interface{} {
+	v.hash.setType(HCOMPLEX)
+
 	return nil
 }
 
 func (v *visitor) VisitFalse(ctx *parser.FalseContext) interface{} {
+	v.hash.setType(HCOMPLEX)
+
 	return nil
 }
 
 func (v *visitor) VisitGroupedExpressionTree(ctx *parser.GroupedExpressionTreeContext) interface{} {
+	v.hash.setType(HCOMPLEX)
+
 	v.Visit(ctx.Expression())
 
 	return nil
 }
 
 func (v *visitor) VisitArrayTree(ctx *parser.ArrayTreeContext) interface{} {
+	v.hash.setType(HCOMPLEX)
+
 	if ctx.ExpressionList() != nil {
 		v.Visit(ctx.ExpressionList())
 	}
@@ -69,6 +80,8 @@ func (v *visitor) VisitArrayTree(ctx *parser.ArrayTreeContext) interface{} {
 }
 
 func (v *visitor) VisitArrayFunctionTree(ctx *parser.ArrayFunctionTreeContext) interface{} {
+	v.hash.setType(HCOMPLEX)
+
 	v.Visit(ctx.ArrayFunctions())
 
 	if ctx.ExpressionList() != nil {
@@ -79,6 +92,8 @@ func (v *visitor) VisitArrayFunctionTree(ctx *parser.ArrayFunctionTreeContext) i
 }
 
 func (v *visitor) VisitFunctionTree(ctx *parser.FunctionTreeContext) interface{} {
+	v.hash.setType(HCOMPLEX)
+
 	v.declaration.setType(DFUNCTION)
 
 	v.Visit(ctx.FunctionParameters())
@@ -91,6 +106,10 @@ func (v *visitor) VisitFunctionTree(ctx *parser.FunctionTreeContext) interface{}
 }
 
 func (v *visitor) VisitHashObjectTree(ctx *parser.HashObjectTreeContext) interface{} {
+	v.declaration.setType(DHASH)
+
+	v.hash.setType(HCOMPLEX)
+
 	v.Visit(ctx.HashContent(0))
 
 	totalBranches := len(ctx.AllHashContent())
@@ -101,16 +120,32 @@ func (v *visitor) VisitHashObjectTree(ctx *parser.HashObjectTreeContext) interfa
 		index++
 	}
 
+	if !v.declaration.isNestedHash() {
+		token := v.declaration.getToken()
+		if token != nil {
+			hashData := identification.NewHashData()
+			for _, k := range v.declaration.getHashKeys() {
+				hashData.AddKey(k.token)
+			}
+			attr := identification.NewAttribute(identification.HASH, token, hashData)
+			v.table.Enter(token.GetText(), attr)
+		}
+	}
+
 	return nil
 }
 
 func (v *visitor) VisitPrintTree(ctx *parser.PrintTreeContext) interface{} {
+	v.hash.setType(HCOMPLEX)
+
 	v.Visit(ctx.Expression())
 
 	return nil
 }
 
 func (v *visitor) VisitConditionalTree(ctx *parser.ConditionalTreeContext) interface{} {
+	v.hash.setType(HCOMPLEX)
+
 	v.Visit(ctx.Expression())
 
 	v.Visit(ctx.BlockStatement(0))

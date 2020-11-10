@@ -16,6 +16,8 @@ func (v *visitor) VisitMultiplicationTree(ctx *parser.MultiplicationTreeContext)
 	totalBranches := len(ctx.AllElementExpression())
 	index := 1
 	for index < totalBranches {
+		v.hash.setType(HCOMPLEX)
+
 		v.Visit(ctx.MultiplicationFactor(index - 1))
 
 		v.Visit(ctx.ElementExpression(index))
