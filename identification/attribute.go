@@ -4,6 +4,7 @@ import (
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
+// expressions types
 type ExpressionType int
 
 const (
@@ -14,6 +15,14 @@ const (
 	ARRAY
 )
 
+/*
+	indentification table attribute
+	data stores information for a especific type of expression
+		- identifier (no data)
+		- function (functiondata.go)
+		- hash (hashdata.go)
+		- array (arraydata.go)
+*/
 type attribute struct {
 	expression ExpressionType
 	token      antlr.Token
@@ -21,6 +30,7 @@ type attribute struct {
 	data       interface{}
 }
 
+// constructor
 func NewAttribute(expression ExpressionType, token antlr.Token, data interface{}) *attribute {
 	return &attribute{
 		expression: expression,
@@ -29,22 +39,27 @@ func NewAttribute(expression ExpressionType, token antlr.Token, data interface{}
 	}
 }
 
+// getter
 func (a *attribute) getToken() antlr.Token {
 	return a.token
 }
 
+// a declaration was used
 func (a *attribute) markVisited() {
 	a.visited = true
 }
 
+// check if a declaration was used
 func (a *attribute) wasVisited() bool {
 	return a.visited
 }
 
+// getter
 func (a *attribute) GetType() ExpressionType {
 	return a.expression
 }
 
+// getter
 func (a *attribute) GetData() interface{} {
 	return a.data
 }

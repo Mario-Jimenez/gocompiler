@@ -18,11 +18,15 @@ import (
 func (v *visitor) VisitLetStatementTree(ctx *parser.LetStatementTreeContext) interface{} {
 	v.declaration.newDeclaration()
 
+	// store token in declaration helper
+	// so it can be accessed in the expression of the let statement if needed
 	token := ctx.IDENTIFIER().GetSymbol()
 	v.declaration.setToken(token)
 
 	v.Visit(ctx.Expression())
 
+	// declaration was not used in a function, a hash or an array
+	// it's a simple declaration
 	if v.declaration.getType() == DNEUTRAL {
 		attr := identification.NewAttribute(identification.IDENTIFIER, token, nil)
 		v.table.Enter(ctx.IDENTIFIER().GetText(), attr)
