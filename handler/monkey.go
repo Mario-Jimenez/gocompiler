@@ -68,10 +68,13 @@ func parsing(program string) ([]string, []int, interface{}) {
 	treeGraph := graphVisitor.Visit(tree)
 
 	if parserErrors.Errors() == nil {
-		// contextual analysis visitor
+		// errors handler for contextual visitor
 		contextualErrors := identification.NewErrorsHandler()
+		// identification table
 		table := identification.NewTable(contextualErrors)
+		// contextual analysis visitor
 		contextualVisitor := contextual.NewVisitor(table)
+		// start of contextual visitor
 		contextualVisitor.Visit(tree)
 
 		if contextualErrors.Errors() == nil {

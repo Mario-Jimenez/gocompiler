@@ -1,10 +1,12 @@
 package identification
 
+// store errors
 type errorsHandler struct {
 	errors []string
 	lines  []int
 }
 
+// constructor
 func NewErrorsHandler() *errorsHandler {
 	return &errorsHandler{
 		errors: []string{},
@@ -12,17 +14,18 @@ func NewErrorsHandler() *errorsHandler {
 	}
 }
 
+// store new error
 func (e *errorsHandler) Add(newError string, newLine int) {
 	e.errors = append(e.errors, newError)
 	e.lines = append(e.lines, newLine)
 }
 
-// Errors
+// getter
 func (e *errorsHandler) Errors() []string {
 	return e.errors
 }
 
-// Lines
+// getter
 func (e *errorsHandler) Lines() []int {
 	return e.lines
 }
