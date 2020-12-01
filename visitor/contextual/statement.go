@@ -43,7 +43,17 @@ func (v *visitor) VisitReturnStatementTree(ctx *parser.ReturnStatementTreeContex
 		token := ctx.RETURN().GetSymbol()
 		newError := fmt.Sprintf("line %d:%d return outside function declaration", token.GetLine(), token.GetColumn())
 		v.table.AddError(newError, token.GetLine())
+	} else {
+		token := v.declaration.getFunctionToken()
+		// search for identifier in the identification table
+		attr := v.table.Retrieve(token)
+
+		// mark function with return
+		functionData := attr.GetData().(*identification.FunctionData)
+		functionData.SetReturn()
 	}
+
+	v.array.setReturn()
 
 	v.Visit(ctx.Expression())
 

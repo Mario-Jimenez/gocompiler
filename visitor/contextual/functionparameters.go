@@ -23,6 +23,8 @@ func (v *visitor) VisitFunctionParametersTree(ctx *parser.FunctionParametersTree
 		functionData := identification.NewFunctionData(len(ctx.AllIDENTIFIER()))
 		attr := identification.NewAttribute(identification.FUNCTION, token, functionData)
 		v.table.Enter(token.GetText(), attr)
+		// function token backup
+		v.declaration.setFunctionToken(token)
 		// avoid creating a function declaration in a nested function expression that is not a declaration
 		v.declaration.setToken(nil)
 	}

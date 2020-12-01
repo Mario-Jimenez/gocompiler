@@ -2,8 +2,8 @@ package identification
 
 // array's function element information
 type arrayElement struct {
-	index      int
 	parameters int
+	hasReturn  bool
 }
 
 /*
@@ -11,28 +11,28 @@ type arrayElement struct {
 	stores information for function elements only
 */
 type ArrayData struct {
-	elements []*arrayElement
+	elements map[int]*arrayElement
 }
 
 // constructor
 func NewArrayData() *ArrayData {
-	return &ArrayData{}
+	return &ArrayData{
+		elements: map[int]*arrayElement{},
+	}
 }
 
 // new array element
-func (a *ArrayData) AddElement(index int, parameters int) {
-	a.elements = append(a.elements, &arrayElement{
-		index:      index,
+func (a *ArrayData) AddElement(index int, parameters int, hasReturn bool) {
+	a.elements[index] = &arrayElement{
 		parameters: parameters,
-	})
+		hasReturn:  hasReturn,
+	}
 }
 
 // search element in array
 func (a *ArrayData) FindElement(index int) *arrayElement {
-	for _, e := range a.elements {
-		if e.index == index {
-			return e
-		}
+	if element, ok := a.elements[index]; ok {
+		return element
 	}
 
 	return nil
@@ -41,4 +41,9 @@ func (a *ArrayData) FindElement(index int) *arrayElement {
 // getter
 func (a *arrayElement) GetParameters() int {
 	return a.parameters
+}
+
+// getter
+func (a *arrayElement) HasReturn() bool {
+	return a.hasReturn
 }

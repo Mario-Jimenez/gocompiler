@@ -71,6 +71,9 @@ func (v *visitor) VisitElementAccessTree(ctx *parser.ElementAccessTreeContext) i
 					// check if we're working on a declaration
 					if token != nil {
 						functionData := identification.NewFunctionData(arrayElement.GetParameters())
+						if arrayElement.HasReturn() {
+							functionData.SetReturn()
+						}
 						attr := identification.NewAttribute(identification.FUNCTION, token, functionData)
 						v.table.Enter(token.GetText(), attr)
 					}

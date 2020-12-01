@@ -100,7 +100,7 @@ func (v *visitor) VisitArrayTree(ctx *parser.ArrayTreeContext) interface{} {
 		if token != nil {
 			arrayData := identification.NewArrayData()
 			for _, k := range v.declaration.getArrayElements() {
-				arrayData.AddElement(k.index, k.parameters)
+				arrayData.AddElement(k.index, k.parameters, k.hasReturn)
 			}
 			attr := identification.NewAttribute(identification.ARRAY, token, arrayData)
 			v.table.Enter(token.GetText(), attr)

@@ -21,7 +21,7 @@ func (v *visitor) VisitExpressionListTree(ctx *parser.ExpressionListTreeContext)
 
 	// handle function inside array
 	if !v.array.isNestedArray() && v.array.isActive() {
-		v.declaration.addArrayElement(0, v.array.getParameters())
+		v.declaration.addArrayElement(0, v.array.getParameters(), v.array.getReturn())
 		v.array.reset()
 	}
 
@@ -32,7 +32,7 @@ func (v *visitor) VisitExpressionListTree(ctx *parser.ExpressionListTreeContext)
 
 		// handle function inside array
 		if !v.array.isNestedArray() && v.array.isActive() {
-			v.declaration.addArrayElement(index, v.array.getParameters())
+			v.declaration.addArrayElement(index, v.array.getParameters(), v.array.getReturn())
 			v.array.reset()
 		}
 

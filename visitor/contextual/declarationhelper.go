@@ -19,6 +19,7 @@ const (
 */
 type declaration struct {
 	token         antlr.Token
+	functionToken antlr.Token
 	declaration   DeclarationType
 	parameters    int
 	hashKeys      []hashKey
@@ -58,6 +59,21 @@ func (h *declarationHelper) getToken() antlr.Token {
 	// validates that we're working on a declaration
 	if h.levels > -1 {
 		return h.declarations[h.levels].token
+	}
+
+	return nil
+}
+
+// setter
+func (h *declarationHelper) setFunctionToken(token antlr.Token) {
+	h.declarations[h.levels].functionToken = token
+}
+
+// getter
+func (h *declarationHelper) getFunctionToken() antlr.Token {
+	// validates that we're working on a declaration
+	if h.levels > -1 {
+		return h.declarations[h.levels].functionToken
 	}
 
 	return nil
@@ -143,12 +159,13 @@ func (h *declarationHelper) getHashKeys() []hashKey {
 }
 
 // when working with array declarations, store new array function element
-func (h *declarationHelper) addArrayElement(index, parameters int) {
+func (h *declarationHelper) addArrayElement(index, parameters int, hasReturn bool) {
 	// validates that we're working on a declaration
 	if h.levels > -1 {
 		h.declarations[h.levels].arrayElements = append(h.declarations[h.levels].arrayElements, arrayElement{
 			index:      index,
 			parameters: parameters,
+			hasReturn:  hasReturn,
 		})
 	}
 }

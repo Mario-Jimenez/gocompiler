@@ -6,6 +6,7 @@ package contextual
 type arrayElement struct {
 	index      int
 	parameters int
+	hasReturn  bool
 	active     bool
 }
 
@@ -43,6 +44,19 @@ func (h *arrayHelper) setParameters(parameters int) {
 // getter
 func (h *arrayHelper) getParameters() int {
 	return h.arrays[h.levels].parameters
+}
+
+// setter
+func (h *arrayHelper) setReturn() {
+	// validates that we're working with an array expression
+	if h.levels > -1 {
+		h.arrays[h.levels].hasReturn = true
+	}
+}
+
+// getter
+func (h *arrayHelper) getReturn() bool {
+	return h.arrays[h.levels].hasReturn
 }
 
 // allow storage of function element

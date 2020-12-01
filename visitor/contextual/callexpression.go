@@ -49,6 +49,13 @@ func (v *visitor) VisitFunctionCallTree(ctx *parser.FunctionCallTreeContext) int
 				newError := fmt.Sprintf("line %d:%d mismatched parameters for function '%s'", token.GetLine(), token.GetColumn(), token.GetText())
 				v.table.AddError(newError, token.GetLine())
 			}
+			// validate a function has a return statement when calling it in a declaration
+			if v.declaration.getToken() != nil {
+				if !functionData.HasReturn() {
+					newError := fmt.Sprintf("line %d:%d function '%s' has no return statement", token.GetLine(), token.GetColumn(), token.GetText())
+					v.table.AddError(newError, token.GetLine())
+				}
+			}
 		}
 	}
 
