@@ -1,6 +1,7 @@
 package contextual
 
 import (
+	"github.com/Mario-Jimenez/gocompiler/parser"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
@@ -18,13 +19,14 @@ const (
 	store data for different types of declarations
 */
 type declaration struct {
-	token         antlr.Token
-	functionToken antlr.Token
-	declaration   DeclarationType
-	parameters    int
-	hashKeys      []hashKey
-	nestedHash    int
-	arrayElements []arrayElement
+	token              antlr.Token
+	functionToken      antlr.Token
+	declaration        DeclarationType
+	declarationContext *parser.LetStatementTreeContext
+	parameters         int
+	hashKeys           []hashKey
+	nestedHash         int
+	arrayElements      []arrayElement
 }
 
 /*
@@ -62,6 +64,16 @@ func (h *declarationHelper) getToken() antlr.Token {
 	}
 
 	return nil
+}
+
+// setter
+func (h *declarationHelper) setDeclarationContext(ctx *parser.LetStatementTreeContext) {
+	h.declarations[h.levels].declarationContext = ctx
+}
+
+// getter
+func (h *declarationHelper) getDeclarationContext() *parser.LetStatementTreeContext {
+	return h.declarations[h.levels].declarationContext
 }
 
 // setter

@@ -1,6 +1,9 @@
 package contextual
 
-import "github.com/Mario-Jimenez/gocompiler/identification"
+import (
+	"github.com/Mario-Jimenez/gocompiler/identification"
+	"github.com/Mario-Jimenez/gocompiler/parser"
+)
 
 // visitor implementation of MonkeyParserVisitor interface
 // fot the contextual analysis
@@ -15,7 +18,7 @@ type visitor struct {
 }
 
 // NewVisitor instance
-func NewVisitor(table *identification.Table) *visitor {
+func NewVisitor(table *identification.Table) parser.MonkeyParserVisitor {
 	return &visitor{
 		table:       table,
 		declaration: newDeclarationHelper(),

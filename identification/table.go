@@ -56,7 +56,10 @@ func (t *Table) OpenScope() {
 // close scope
 // validates that all declarations in scope were used
 func (t *Table) CloseScope() {
-	for _, declaration := range t.table[t.level] {
+	for key, declaration := range t.table[t.level] {
+		if key == "Main" || key == "main" {
+			continue
+		}
 		// declaration was not used
 		if !declaration.wasVisited() {
 			token := declaration.getToken()
@@ -64,6 +67,7 @@ func (t *Table) CloseScope() {
 			t.errors.Add(newError, token.GetLine())
 		}
 	}
+
 	delete(t.table, t.level)
 	t.level--
 }
@@ -82,4 +86,15 @@ func (t *Table) Print() {
 // store new error
 func (t *Table) AddError(newError string, newLine int) {
 	t.errors.Add(newError, newLine)
+}
+
+func (t *Table) GetInfo(token antlr.Token) Declaration {
+	id := token.GetText()
+	attr := t.table[t.level][id]
+
+	return Declaration{
+		level:      t.level,
+		expression: attr.expression,
+		data:       attr.data,
+	}
 }
