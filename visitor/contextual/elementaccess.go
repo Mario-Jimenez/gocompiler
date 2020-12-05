@@ -74,7 +74,7 @@ func (v *visitor) VisitElementAccessTree(ctx *parser.ElementAccessTreeContext) i
 						if arrayElement.HasReturn() {
 							functionData.SetReturn()
 						}
-						attr := identification.NewAttribute(identification.FUNCTION, token, functionData)
+						attr := identification.NewAttribute(identification.FUNCTION, token, v.declaration.getDeclarationContext(), functionData)
 						v.table.Enter(token.GetText(), attr)
 					}
 				}

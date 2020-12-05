@@ -21,7 +21,7 @@ func (v *visitor) VisitFunctionParametersTree(ctx *parser.FunctionParametersTree
 		// before entering the body of the function
 		// this allows recursion to work
 		functionData := identification.NewFunctionData(len(ctx.AllIDENTIFIER()))
-		attr := identification.NewAttribute(identification.FUNCTION, token, functionData)
+		attr := identification.NewAttribute(identification.FUNCTION, token, v.declaration.getDeclarationContext(), functionData)
 		v.table.Enter(token.GetText(), attr)
 		// function token backup
 		v.declaration.setFunctionToken(token)
@@ -37,7 +37,7 @@ func (v *visitor) VisitFunctionParametersTree(ctx *parser.FunctionParametersTree
 	parameters[ctx.IDENTIFIER(0).GetText()] = nil
 
 	token = ctx.IDENTIFIER(0).GetSymbol()
-	attr := identification.NewAttribute(identification.IDENTIFIER, token, nil)
+	attr := identification.NewAttribute(identification.IDENTIFIER, token, nil, nil)
 	v.table.Enter(ctx.IDENTIFIER(0).GetText(), attr)
 
 	totalBranches := len(ctx.AllIDENTIFIER())
@@ -61,7 +61,7 @@ func (v *visitor) VisitFunctionParametersTree(ctx *parser.FunctionParametersTree
 
 		parameters[ctx.IDENTIFIER(0).GetText()] = nil
 
-		attr := identification.NewAttribute(identification.IDENTIFIER, token, nil)
+		attr := identification.NewAttribute(identification.IDENTIFIER, token, nil, nil)
 		v.table.Enter(ctx.IDENTIFIER(index).GetText(), attr)
 
 		index++

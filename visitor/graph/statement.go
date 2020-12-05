@@ -8,7 +8,7 @@ import (
 
 /*
 	statement:
-		LET IDENTIFIER ASSIGN expression SEMI?	# letStatementTree
+		LET letIdent ASSIGN expression SEMI?	# letStatementTree
 		| RETURN expression SEMI?				# returnStatementTree
 		| expression SEMI?						# expressionStatementTree
 		;
@@ -20,16 +20,19 @@ func (v *visitor) VisitLetStatementTree(ctx *parser.LetStatementTreeContext) int
 
 	children = append(children, childNode(ctx.LET().GetText(), terminalColor))
 
-	if ctx.IDENTIFIER() != nil {
-		if !strings.Contains(ctx.IDENTIFIER().GetText(), "<missing") {
-			children = append(children, childNode(ctx.IDENTIFIER().GetText(), terminalColor))
+	if ctx.LetIdent() != nil {
+		node := v.Visit(ctx.LetIdent())
+		if n, ok := node.(*visitResponse); ok {
+			if n.hasFailed() {
+				hasError = true
+			}
+			children = append(children, n.info())
 		} else {
 			hasError = true
-			children = append(children, childNode("IDENTIFIER", errorColor))
 		}
 	} else {
 		hasError = true
-		children = append(children, childNode("IDENTIFIER", errorColor))
+		children = append(children, childNode("LetIdentifier", errorColor))
 	}
 
 	if ctx.ASSIGN() != nil {

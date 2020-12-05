@@ -5,6 +5,7 @@ import (
 
 	"github.com/Mario-Jimenez/gocompiler/identification"
 	"github.com/Mario-Jimenez/gocompiler/parser"
+	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
 /*
@@ -17,10 +18,11 @@ import (
 
 func (v *visitor) VisitLetStatementTree(ctx *parser.LetStatementTreeContext) interface{} {
 	v.declaration.newDeclaration()
+	v.declaration.setDeclarationContext(ctx)
 
 	// store token in declaration helper
 	// so it can be accessed in the expression of the let statement if needed
-	token := ctx.IDENTIFIER().GetSymbol()
+	token := v.Visit(ctx.LetIdent()).(antlr.Token)
 	v.declaration.setToken(token)
 
 	v.Visit(ctx.Expression())
@@ -28,9 +30,11 @@ func (v *visitor) VisitLetStatementTree(ctx *parser.LetStatementTreeContext) int
 	// declaration was not used in a function, a hash or an array
 	// it's a simple declaration
 	if v.declaration.getType() == DNEUTRAL {
-		attr := identification.NewAttribute(identification.IDENTIFIER, token, nil)
-		v.table.Enter(ctx.IDENTIFIER().GetText(), attr)
+		attr := identification.NewAttribute(identification.IDENTIFIER, token, ctx, nil)
+		v.table.Enter(token.GetText(), attr)
 	}
+
+	ctx.LetIdent().SetDeclaration(v.table.GetInfo(token))
 
 	v.declaration.closeDeclaration()
 

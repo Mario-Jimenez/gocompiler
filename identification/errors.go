@@ -8,10 +8,7 @@ type errorsHandler struct {
 
 // constructor
 func NewErrorsHandler() *errorsHandler {
-	return &errorsHandler{
-		errors: []string{},
-		lines:  []int{},
-	}
+	return new(errorsHandler)
 }
 
 // store new error

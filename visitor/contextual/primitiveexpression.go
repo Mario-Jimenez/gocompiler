@@ -10,7 +10,7 @@ import (
 	primitiveExpression:
 		INTEGER														# integer
 		| STRING													# string
-		| IDENTIFIER												# identifier
+		| identifier												# identifierTree
 		| TRUE														# true
 		| FALSE														# false
 		| L_PAREN expression R_PAREN								# groupedExpressionTree
@@ -45,10 +45,11 @@ func (v *visitor) VisitString(ctx *parser.StringContext) interface{} {
 	return nil
 }
 
-func (v *visitor) VisitIdentifier(ctx *parser.IdentifierContext) interface{} {
+func (v *visitor) VisitIdentifierTree(ctx *parser.IdentifierTreeContext) interface{} {
 	// mark expression as an identifier
 	v.identifier.setType(IIDENTIFIER)
-	v.identifier.setToken(ctx.IDENTIFIER().GetSymbol())
+
+	v.Visit(ctx.Identifier())
 
 	// when working with a hash expression, tell hash key is not integer or string
 	v.hash.setType(HCOMPLEX)
@@ -102,7 +103,7 @@ func (v *visitor) VisitArrayTree(ctx *parser.ArrayTreeContext) interface{} {
 			for _, k := range v.declaration.getArrayElements() {
 				arrayData.AddElement(k.index, k.parameters, k.hasReturn)
 			}
-			attr := identification.NewAttribute(identification.ARRAY, token, arrayData)
+			attr := identification.NewAttribute(identification.ARRAY, token, v.declaration.getDeclarationContext(), arrayData)
 			v.table.Enter(token.GetText(), attr)
 		}
 	}
@@ -187,7 +188,7 @@ func (v *visitor) VisitHashObjectTree(ctx *parser.HashObjectTreeContext) interfa
 			for _, k := range v.declaration.getHashKeys() {
 				hashData.AddKey(k.token)
 			}
-			attr := identification.NewAttribute(identification.HASH, token, hashData)
+			attr := identification.NewAttribute(identification.HASH, token, v.declaration.getDeclarationContext(), hashData)
 			v.table.Enter(token.GetText(), attr)
 		}
 	}

@@ -6,6 +6,7 @@ import (
 	"github.com/Mario-Jimenez/gocompiler/errors"
 	"github.com/Mario-Jimenez/gocompiler/identification"
 	"github.com/Mario-Jimenez/gocompiler/parser"
+	"github.com/Mario-Jimenez/gocompiler/visitor/codegenerator"
 	"github.com/Mario-Jimenez/gocompiler/visitor/contextual"
 	"github.com/Mario-Jimenez/gocompiler/visitor/graph"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
@@ -78,6 +79,11 @@ func parsing(program string) ([]string, []int, interface{}) {
 		contextualVisitor.Visit(tree)
 
 		if contextualErrors.Errors() == nil {
+			// code generator visitor
+			generatorVisitor := codegenerator.NewVisitor()
+			// start of code generator visitor
+			generatorVisitor.Visit(tree)
+
 			return []string{}, []int{}, treeGraph
 		}
 
