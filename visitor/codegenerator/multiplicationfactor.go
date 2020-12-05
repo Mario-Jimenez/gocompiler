@@ -10,13 +10,13 @@ import "github.com/Mario-Jimenez/gocompiler/parser"
 */
 
 func (v *visitor) VisitMultiplicationOperator(ctx *parser.MultiplicationOperatorContext) interface{} {
-	v.addInstruction("BINARY_MULTIPLY", "")
+	v.addInstruction("BINARY_MULTIPLY", "*")
 
 	return nil
 }
 
 func (v *visitor) VisitDivisionOperator(ctx *parser.DivisionOperatorContext) interface{} {
-	v.addInstruction("BINARY_DIVIDE", "")
+	v.addInstruction("BINARY_DIVIDE", "/")
 
 	return nil
 }
