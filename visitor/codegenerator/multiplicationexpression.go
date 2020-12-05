@@ -1,4 +1,4 @@
-package contextual
+package codegenerator
 
 import (
 	"github.com/Mario-Jimenez/gocompiler/parser"
@@ -16,12 +16,9 @@ func (v *visitor) VisitMultiplicationTree(ctx *parser.MultiplicationTreeContext)
 	totalBranches := len(ctx.AllElementExpression())
 	index := 1
 	for index < totalBranches {
-		// when working with a hash expression, tell hash key is not integer or string
-		v.hash.setType(HCOMPLEX)
-
-		// v.Visit(ctx.MultiplicationFactor(index - 1))
-
 		v.Visit(ctx.ElementExpression(index))
+
+		v.Visit(ctx.MultiplicationFactor(index - 1))
 
 		index++
 	}

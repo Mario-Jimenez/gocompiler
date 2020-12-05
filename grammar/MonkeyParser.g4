@@ -6,7 +6,7 @@ options {
 
 program : statement* EOF # programTree;
 statement:
-	LET IDENTIFIER ASSIGN expression SEMI?	# letStatementTree
+	LET letIdent ASSIGN expression SEMI?	# letStatementTree
 	| RETURN expression SEMI?				# returnStatementTree
 	| expression SEMI?						# expressionStatementTree
 	;
@@ -45,7 +45,7 @@ callExpression:
 primitiveExpression:
 	INTEGER														# integer
 	| STRING													# string
-	| IDENTIFIER												# identifier
+	| identifier												# identifierTree
 	| TRUE														# true
 	| FALSE														# false
 	| L_PAREN expression R_PAREN								# groupedExpressionTree
@@ -71,3 +71,10 @@ expressionList:
 	expression (COMMA expression)* # expressionListTree
 	;
 blockStatement : L_CURLY statement* R_CURLY # blockTree;
+
+letIdent
+	locals[declaration:interface{}] : IDENTIFIER # letIdentifier;
+identifier
+	locals[declaration:*LetStatementTreeContext]:
+	IDENTIFIER # identifierNode
+	;
