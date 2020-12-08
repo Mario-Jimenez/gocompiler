@@ -39,6 +39,16 @@ func (a *ArrayData) FindElement(index int) *arrayElement {
 }
 
 // getter
+func (a *ArrayData) GetFunctionIndexes() []int {
+	indexes := []int{}
+	for index := range a.elements {
+		indexes = append(indexes, index)
+	}
+
+	return indexes
+}
+
+// getter
 func (a *arrayElement) GetParameters() int {
 	return a.parameters
 }

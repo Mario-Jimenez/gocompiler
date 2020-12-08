@@ -2,6 +2,7 @@ package codegenerator
 
 import (
 	"fmt"
+	"strconv"
 
 	"github.com/Mario-Jimenez/gocompiler/identification"
 	"github.com/Mario-Jimenez/gocompiler/parser"
@@ -27,6 +28,11 @@ import (
 
 func (v *visitor) VisitInteger(ctx *parser.IntegerContext) interface{} {
 	v.addInstruction("LOAD_CONST", ctx.INTEGER().GetText())
+
+	if v.access != nil {
+		index, _ := strconv.Atoi(ctx.INTEGER().GetText())
+		v.access.index = index
+	}
 
 	return nil
 }
@@ -59,6 +65,15 @@ func (v *visitor) VisitIdentifierTree(ctx *parser.IdentifierTreeContext) interfa
 				call = newCallHelper(false, token.GetText(), function.GetParameters(), function.HasReturn())
 			}
 			v.call = call
+		} else if declaration.Expression() == identification.ARRAY {
+			array := declaration.Data().(*identification.ArrayData)
+			var access *accessHelper
+			if declaration.Level() == 1 {
+				access = newAccessHelper(true, token.GetText(), array.GetFunctionIndexes())
+			} else {
+				access = newAccessHelper(false, token.GetText(), array.GetFunctionIndexes())
+			}
+			v.access = access
 		}
 	} else {
 		// function parameters
@@ -87,8 +102,31 @@ func (v *visitor) VisitGroupedExpressionTree(ctx *parser.GroupedExpressionTreeCo
 }
 
 func (v *visitor) VisitArrayTree(ctx *parser.ArrayTreeContext) interface{} {
+	var jumpIndex int
+	if v.array != nil {
+		jumpIndex = v.instructionIndex
+		v.addInstruction("JUMP_ABSOLUTE", "")
+	}
+
 	if ctx.ExpressionList() != nil {
 		v.Visit(ctx.ExpressionList())
+	}
+
+	if v.array != nil {
+		// backpatching
+		v.updateInstruction(jumpIndex, fmt.Sprintf("%d", v.instructionIndex))
+
+		for _, index := range v.array.indexes {
+			v.addInstruction("LOAD_CONST", fmt.Sprintf("%d", index))
+		}
+
+		v.addInstruction("LOAD_CONST", v.array.name)
+
+		if v.array.global {
+			v.addInstruction("BUILD_LIST_GLOBAL", fmt.Sprintf("%d", len(v.array.indexes)))
+		} else {
+			v.addInstruction("BUILD_LIST_LOCAL", fmt.Sprintf("%d", len(v.array.indexes)))
+		}
 	}
 
 	return nil
@@ -105,7 +143,6 @@ func (v *visitor) VisitArrayFunctionTree(ctx *parser.ArrayFunctionTreeContext) i
 }
 
 func (v *visitor) VisitFunctionTree(ctx *parser.FunctionTreeContext) interface{} {
-
 	v.Visit(ctx.FunctionParameters())
 	v.Visit(ctx.BlockStatement())
 

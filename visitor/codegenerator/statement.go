@@ -33,6 +33,18 @@ func (v *visitor) VisitLetStatementTree(ctx *parser.LetStatementTreeContext) int
 		}
 	}
 
+	if declaration.Expression() == identification.ARRAY {
+		if declaration.Level() == 1 {
+			v.addInstruction("PUSH_GLOBAL", token.GetText())
+			v.array = newArrayHelper(true, token.GetText())
+		} else {
+			v.addInstruction("PUSH_LOCAL", token.GetText())
+			v.array = newArrayHelper(false, token.GetText())
+		}
+		array := declaration.Data().(*identification.ArrayData)
+		v.array.functionIndexes = array.GetFunctionIndexes()
+	}
+
 	v.Visit(ctx.Expression())
 
 	if declaration.Expression() == identification.IDENTIFIER {
@@ -42,6 +54,8 @@ func (v *visitor) VisitLetStatementTree(ctx *parser.LetStatementTreeContext) int
 			v.addInstruction("STORE_FAST", token.GetText())
 		}
 	}
+
+	v.array = nil
 
 	return nil
 }

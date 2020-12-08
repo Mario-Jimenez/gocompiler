@@ -13,5 +13,23 @@ import (
 func (v *visitor) VisitElementAccessTree(ctx *parser.ElementAccessTreeContext) interface{} {
 	v.Visit(ctx.Expression())
 
+	if v.access.global {
+		if v.access.isFunction() {
+			v.addInstruction("ACCESS_FUNCTION_GLOBAL", v.access.name)
+			v.addInstruction("RETURN", "")
+		} else {
+			v.addInstruction("ACCESS_ELEMENT_GLOBAL", v.access.name)
+		}
+	} else {
+		if v.access.isFunction() {
+			v.addInstruction("ACCESS_FUNCTION_LOCAL", v.access.name)
+			v.addInstruction("RETURN", "")
+		} else {
+			v.addInstruction("ACCESS_ELEMENT_LOCAL", v.access.name)
+		}
+	}
+
+	v.access = nil
+
 	return nil
 }
