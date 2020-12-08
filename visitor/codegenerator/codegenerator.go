@@ -9,7 +9,9 @@ type visitor struct {
 	code             map[int]*instruction
 	instructionIndex int
 
-	call *callHelper
+	call   *callHelper
+	array  *arrayHelper
+	access *accessHelper
 }
 
 type instruction struct {
@@ -22,11 +24,6 @@ func NewVisitor() parser.MonkeyParserVisitor {
 	return &visitor{
 		code: map[int]*instruction{},
 	}
-}
-
-// check if a declaration exists in global scope
-func (v *visitor) isGlobal(declaration string) bool {
-	return false
 }
 
 func (v *visitor) addInstruction(name, parameter string) {
