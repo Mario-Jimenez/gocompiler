@@ -9,8 +9,11 @@ import (
 */
 
 func (v *visitor) VisitHashPairTree(ctx *parser.HashPairTreeContext) interface{} {
-	v.Visit(ctx.Expression(0))
+	v.hash.addIndex(v.instructionIndex)
+
 	v.Visit(ctx.Expression(1))
+
+	v.addInstruction("RETURN_ACCESS", "")
 
 	return nil
 }

@@ -29,3 +29,8 @@ func (h *HashData) FindKey(key antlr.Token) bool {
 
 	return false
 }
+
+// getter
+func (h *HashData) GetKeys() []antlr.Token {
+	return h.keys
+}

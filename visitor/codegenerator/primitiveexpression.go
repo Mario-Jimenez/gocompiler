@@ -74,6 +74,14 @@ func (v *visitor) VisitIdentifierTree(ctx *parser.IdentifierTreeContext) interfa
 				access = newAccessHelper(false, token.GetText(), array.GetFunctionIndexes())
 			}
 			v.access = access
+		} else if declaration.Expression() == identification.HASH {
+			var access *accessHelper
+			if declaration.Level() == 1 {
+				access = newAccessHelper(true, token.GetText(), []int{})
+			} else {
+				access = newAccessHelper(false, token.GetText(), []int{})
+			}
+			v.access = access
 		}
 	} else {
 		// function parameters
@@ -152,14 +160,32 @@ func (v *visitor) VisitFunctionTree(ctx *parser.FunctionTreeContext) interface{}
 }
 
 func (v *visitor) VisitHashObjectTree(ctx *parser.HashObjectTreeContext) interface{} {
-	v.Visit(ctx.HashContent(0))
+	var jumpIndex int
+	if v.hash != nil {
+		jumpIndex = v.instructionIndex
+		v.addInstruction("JUMP_ABSOLUTE", "")
+	}
 
-	totalBranches := len(ctx.AllHashContent())
-	index := 1
-	for index < totalBranches {
-		v.Visit(ctx.HashContent(index))
+	for _, branch := range ctx.AllHashContent() {
+		v.Visit(branch)
+	}
 
-		index++
+	if v.hash != nil {
+		// backpatching
+		v.updateInstruction(jumpIndex, fmt.Sprintf("%d", v.instructionIndex))
+
+		for i := range v.hash.indexes {
+			v.addInstruction("LOAD_CONST", v.hash.keys[i].GetText())
+			v.addInstruction("LOAD_CONST", fmt.Sprintf("%d", v.hash.indexes[i]))
+		}
+
+		v.addInstruction("LOAD_CONST", v.hash.name)
+
+		if v.hash.global {
+			v.addInstruction("BUILD_HASH_GLOBAL", fmt.Sprintf("%d", len(v.hash.indexes)))
+		} else {
+			v.addInstruction("BUILD_HASH_LOCAL", fmt.Sprintf("%d", len(v.hash.indexes)))
+		}
 	}
 
 	return nil

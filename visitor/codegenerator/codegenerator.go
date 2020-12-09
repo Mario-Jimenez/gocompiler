@@ -12,6 +12,7 @@ type visitor struct {
 	call   *callHelper
 	array  *arrayHelper
 	access *accessHelper
+	hash   *hashHelper
 }
 
 type instruction struct {
