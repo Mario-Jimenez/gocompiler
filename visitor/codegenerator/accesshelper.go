@@ -8,6 +8,7 @@ type accessHelper struct {
 	name            string
 	index           int
 	functionIndexes []int
+	accessElement   bool
 }
 
 // constructor
