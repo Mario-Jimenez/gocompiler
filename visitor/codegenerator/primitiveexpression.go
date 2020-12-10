@@ -141,11 +141,15 @@ func (v *visitor) VisitArrayTree(ctx *parser.ArrayTreeContext) interface{} {
 }
 
 func (v *visitor) VisitArrayFunctionTree(ctx *parser.ArrayFunctionTreeContext) interface{} {
-	v.Visit(ctx.ArrayFunctions())
+	v.isArrayFunction = true
 
 	if ctx.ExpressionList() != nil {
 		v.Visit(ctx.ExpressionList())
 	}
+
+	v.isArrayFunction = false
+
+	v.Visit(ctx.ArrayFunctions())
 
 	return nil
 }

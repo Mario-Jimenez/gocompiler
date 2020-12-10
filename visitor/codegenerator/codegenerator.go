@@ -13,6 +13,8 @@ type visitor struct {
 	array  *arrayHelper
 	access *accessHelper
 	hash   *hashHelper
+
+	isArrayFunction bool
 }
 
 type instruction struct {

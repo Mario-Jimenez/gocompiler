@@ -11,6 +11,8 @@ import (
 */
 
 func (v *visitor) VisitElementAccessTree(ctx *parser.ElementAccessTreeContext) interface{} {
+	v.access.accessElement = true
+
 	v.Visit(ctx.Expression())
 
 	if v.access.global {
@@ -28,8 +30,6 @@ func (v *visitor) VisitElementAccessTree(ctx *parser.ElementAccessTreeContext) i
 			v.addInstruction("ACCESS_ELEMENT_LOCAL", v.access.name)
 		}
 	}
-
-	v.access = nil
 
 	return nil
 }
