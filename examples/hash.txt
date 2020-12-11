@@ -1,0 +1,7 @@
+let Main = fn(main) {
+  let hash = {"name":"Carlos","age":22};
+  
+  puts(hash["name"]);
+  puts(hash["age"]);
+}
+

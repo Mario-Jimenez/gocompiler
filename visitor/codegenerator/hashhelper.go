@@ -20,6 +20,7 @@ func newHashHelper(global bool, name string) *hashHelper {
 	}
 }
 
+// add instruction index
 func (h *hashHelper) addIndex(index int) {
 	h.indexes = append(h.indexes, index)
 }

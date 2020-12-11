@@ -1,8 +1,14 @@
 package handler
 
 import (
+	"fmt"
+	"io/ioutil"
 	"net/http"
+	"os"
+	"os/exec"
+	"strings"
 
+	"github.com/Mario-Jimenez/gocompiler/cli"
 	"github.com/Mario-Jimenez/gocompiler/errors"
 	"github.com/Mario-Jimenez/gocompiler/identification"
 	"github.com/Mario-Jimenez/gocompiler/parser"
@@ -84,6 +90,14 @@ func parsing(program string) ([]string, []int, interface{}) {
 			// start of code generator visitor
 			generatorVisitor.Visit(tree)
 
+			// save instructions to file
+			err := save([]byte(generatorVisitor.Code()))
+			if err != nil {
+				return []string{
+					err.Error(),
+				}, []int{}, treeGraph
+			}
+
 			return []string{}, []int{}, treeGraph
 		}
 
@@ -91,4 +105,39 @@ func parsing(program string) ([]string, []int, interface{}) {
 	}
 
 	return parserErrors.Errors(), parserErrors.Lines(), treeGraph
+}
+
+// save instructions to file
+func save(data []byte) error {
+	err := ioutil.WriteFile(cli.InstructionsCode, data, os.ModePerm)
+	if err != nil {
+		return fmt.Errorf("Failed to save file. %s", err.Error())
+	}
+
+	return nil
+}
+
+// Run program
+func (*Monkey) Run(c *gin.Context) {
+	// execute code on monkey virtual machine
+	result := run()
+
+	// response
+	c.JSON(200, gin.H{
+		"result": result,
+	})
+}
+
+// run monkey virtual machine with instructions code
+func run() string {
+	if _, err := os.Stat(cli.InstructionsCode); err != nil {
+		return fmt.Sprintf("%s\n%s\n...failed", "Instructions code not found. Must compile first.", strings.TrimSpace(err.Error()))
+	}
+
+	out, err := exec.Command(cli.VM, cli.InstructionsCode).Output()
+	if err != nil {
+		return fmt.Sprintf("%s\n...failed", strings.TrimSpace(err.Error()))
+	}
+
+	return fmt.Sprintf("%s\n...finished", strings.TrimSpace(string(out)))
 }

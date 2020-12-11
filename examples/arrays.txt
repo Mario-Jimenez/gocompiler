@@ -1,0 +1,27 @@
+let arreglo = ["text","two",3,4,5,99];
+
+let Main = fn(main) {
+  let val = first(arreglo);
+  let ult = last(arreglo);
+  let largo = len(arreglo);
+  puts(val);
+  puts(ult);
+  puts(largo);
+  
+  let result = rest(arreglo);
+  let val = first(result);
+  let ult = last(result);
+  let largo = len(result);
+  puts(val);
+  puts(ult);
+  puts(largo);
+  
+  let result2 = push("push", result);
+  let val = first(result2);
+  let ult = last(result2);
+  let largo = len(result2);
+  puts(val);
+  puts(ult);
+  puts(largo);
+}
+

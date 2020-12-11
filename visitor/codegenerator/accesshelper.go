@@ -21,6 +21,7 @@ func newAccessHelper(global bool, name string, functionIndexes []int) *accessHel
 	}
 }
 
+// check if element in array is a function
 func (a *accessHelper) isFunction() bool {
 	for _, val := range a.functionIndexes {
 		if val == a.index {
