@@ -8,4 +8,7 @@ build:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o compiler main.go
 
 run:
-	./compiler
+	./compiler -vm="/home/mario/Desktop/Compiladores/proyecto/VM_CS_Final/bin/Debug/netcoreapp3.1/Minics.exe"
+
+help:
+	./compiler -h

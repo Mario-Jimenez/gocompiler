@@ -18,14 +18,17 @@ func newArrayHelper(global bool, name string) *arrayHelper {
 	}
 }
 
+// stores instruction index
 func (a *arrayHelper) addIndex(index int) {
 	a.indexes = append(a.indexes, index)
 }
 
+// stores function instruction index
 func (a *arrayHelper) addFunctionIndex(index int) {
 	a.functionIndexes = append(a.functionIndexes, index)
 }
 
+// check if element in array is a function
 func (a *arrayHelper) isFunction(index int) bool {
 	for _, val := range a.functionIndexes {
 		if val == index {

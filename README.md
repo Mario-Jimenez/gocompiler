@@ -20,7 +20,21 @@ Build project with `$ make build`.
 
 #### Run project
 
-Run project with `$ make run` or with binary file `$ ./compiler`.
+***Flags***
+
+- *-vm*: path to Monkey Virtual Machine binary (**required**)
+- *-code*: path to Monkey Instructions Code file
+- *-h*: help
+
+Run project with `$ make run` or with binary file `$ ./compiler -vm="path/to/file"`.
+
+#### Main Function Template (not required)
+
+```
+let Main = fn(main) {
+  // Your code here
+}
+```
 
 ## Web service
 
@@ -35,7 +49,9 @@ Base URL: http://locahost:4440/monkeycompiler
 **Request:**
 
 ```
-{"program": string}
+{
+    "program": string,
+}
 ```
 
 **Response:**
@@ -47,3 +63,21 @@ Base URL: http://locahost:4440/monkeycompiler
     "tree": {...},
 }
 ```
+It also creates a file with Monkey Instructions Code in the path specified with the flag `-code`.
+
+###### /run
+
+**Request:**
+
+```
+Empty
+```
+
+**Response:**
+
+```
+{
+    "result": string,
+}
+```
+

@@ -49,7 +49,6 @@ func (v *visitor) VisitIdentifierTree(ctx *parser.IdentifierTreeContext) interfa
 	if declarationContext != nil {
 		// let declaration
 		declaration := declarationContext.LetIdent().GetDeclaration().(identification.Declaration)
-		// TODO: check other types of identifiers
 		if declaration.Expression() == identification.IDENTIFIER {
 			if declaration.Level() == 1 {
 				v.addInstruction("LOAD_GLOBAL", token.GetText())

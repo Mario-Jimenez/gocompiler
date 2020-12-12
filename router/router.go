@@ -23,6 +23,7 @@ func newRouter() *gin.Engine {
 	monkeyRoutes := router.Group("/monkeycompiler")
 	{
 		monkeyRoutes.POST("/compile", monkeyHandler.Compile)
+		monkeyRoutes.POST("/run", monkeyHandler.Run)
 	}
 
 	return router
